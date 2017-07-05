@@ -20,6 +20,16 @@ class RuleSet
         return $this->appendIfNotExists('required');
     }
 
+    public function requiredWith(string $otherField)
+    {
+        return $this->appendIfNotExists("required_with:$otherField");
+    }
+
+    public function requiredWithout(string $otherField)
+    {
+        return $this->appendIfNotExists("required_without:$otherField");
+    }
+
     protected function appendIfNotExists(string $rule)
     {
         if (in_array($rule, $this->rules)) {

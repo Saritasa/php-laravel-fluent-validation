@@ -14,7 +14,14 @@ class StringRuleSet extends RuleSet
         return $this->appendIfNotExists('email');
     }
 
-    public function regex(string $pattern){
+    public function regex(string $pattern, bool $ignoreCase = false): StringRuleSet
+    {
+        if (!starts_with($pattern, '/')) {
+            $pattern = "/$pattern/";
+        }
+        if ($ignoreCase && !ends_with('i', $pattern)) {
+            $pattern .= 'i';
+        }
         return $this->appendIfNotExists("regex:$pattern");
     }
 }

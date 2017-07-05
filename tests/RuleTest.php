@@ -25,9 +25,10 @@ class RuleTest extends TestCase
         $this->assertEquals('int', $rules->toString());
     }
 
-    public function testFluidString()
+    public function testDoNotRepeat()
     {
-        $rules = Rule::required()->string()->email();
-        $this->assertEquals('required|string|email', $rules->toString());
+        $this->assertEquals('required', Rule::required()->required()->required()->toString());
+        $this->assertEquals('required|string', Rule::required()->string()->required()->required()->toString());
+        $this->assertEquals('string|required', Rule::string()->required()->required()->required()->toString());
     }
 }
