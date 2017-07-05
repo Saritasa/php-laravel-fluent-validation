@@ -13,7 +13,8 @@
     "require": {
         "php": ">=7.0",
         "illuminate/database": "^5.4",
-        "illuminate/support": "^5.4"
+        "illuminate/support": "^5.4",
+        "saritasa/php-common": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.0"
@@ -21,8 +22,11 @@
     "minimum-stability": "stable",
     "autoload": {
         "psr-4" : {
-            "Saritasa\\Laravel\\Validation": "src/"
+            "Saritasa\\Laravel\\Validation\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": { "Saritasa\\Laravel\\Validation\\Tests\\": "tests/" }
     },
     "config": {
         "preferred-install": "dist",
