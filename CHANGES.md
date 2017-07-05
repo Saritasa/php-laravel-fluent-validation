@@ -3,5 +3,17 @@
 1.0.0
 -----
 
-- Initial version:
-HasRole trait, ServiceProvider
+Basic rules:
+- required
+- required_with
+- required_without
+
+String rules:
+- string
+- regex
+- email
+
+Int rules:
+- int
+- min
+- max
