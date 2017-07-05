@@ -1,0 +1,36 @@
+{
+    "name": "saritasa/php-laravel-fluid-validation",
+    "type": "library",
+    "description": "Set of fluid builders for Laravel request validation rules",
+    "keywords": ["laravel", "validation"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sergey Populov",
+            "email": "sergey@saritasa.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "illuminate/database": "^5.4",
+        "illuminate/support": "^5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.0"
+    },
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4" : {
+            "Saritasa\\Laravel\\Validation": "src/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
