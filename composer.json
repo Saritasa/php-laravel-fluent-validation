@@ -1,5 +1,5 @@
 {
-    "name": "saritasa/php-laravel-fluid-validation",
+    "name": "saritasa/laravel-fluid-validation",
     "type": "library",
     "description": "Set of fluid builders for Laravel request validation rules",
     "keywords": ["laravel", "validation"],

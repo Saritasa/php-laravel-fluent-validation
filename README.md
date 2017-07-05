@@ -39,7 +39,7 @@ Root of your rule builder.
 
 ## Resources
 
-* [Bug Tracker](http://github.com/saritasa/php-roles-simple/issues)
-* [Code](http://github.com/saritasa/php-roles-simple)
+* [Bug Tracker](http://github.com/saritasa/php-laravel-fluid-validation/issues)
+* [Code](http://github.com/saritasa/php-laravel-fluid-validation)
 * [Changes History](CHANGES.md)
-* [Authors](http://github.com/saritasa/php-roles-simple/contributors)
+* [Authors](http://github.com/saritasa/php-laravel-fluid-validation/contributors)
