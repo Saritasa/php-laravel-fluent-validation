@@ -18,4 +18,10 @@ class NumericRulesTest extends TestCase
     {
         $this->assertEquals('between:1,10', Rule::between(1, 10));
     }
+
+    function testDigits()
+    {
+        $this->assertEquals('numeric|digits:6', Rule::digits(6));
+        $this->assertEquals('numeric|digits_between:5,10', Rule::digitsBetween(5,10));
+    }
 }

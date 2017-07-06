@@ -2,12 +2,15 @@
 
 namespace Saritasa\Laravel\Validation;
 
+use Carbon\Carbon;
 use Saritasa\Exceptions\NotImplementedException;
 
 /**
  * Root builder for validation rules
  *
  * @method static ImageRuleSet dimensions(array $constraints) Get a dimensions constraint builder instance.
+ * @method static GenericRuleSet accepted() The field under validation must be yes, on, 1, or true. This is useful for validating "Terms of Service" acceptance.
+ * @method static GenericRuleSet boolean() The field under validation must be able to be cast as a boolean. Accepted input are true,  false, 1, 0, "1", and "0".
  * @method static GenericRuleSet exists(string $table, string $column, \Closure $closure = null) Get a exists constraint builder instance.
  * @method static GenericRuleSet unique(string $table, string $column, \Closure $closure = null) Get a unique constraint builder instance.
  * @method static GenericRuleSet in(... $values) The field under validation must be included in the given list of values.
@@ -43,6 +46,9 @@ use Saritasa\Exceptions\NotImplementedException;
  * @method static DateRuleSet afterOrEqual(Carbon|string $date) The field under validation must be a value after or equal to the given date. For more information, see the after rule.
  * @method static DateRuleSet before(Carbon|string $date) The field under validation must be a value preceding the given date. The dates will be passed into the PHP strtotime function.
  * @method static DateRuleSet beforeOrEqual(Carbon|string $date) The field under validation must be a value preceding or equal to the given date. The dates will be passed into the PHP strtotime function.
+ *
+ * @method static NumericRuleSet digits($length) The field under validation must be numeric and must have an exact length of value.
+ * @method static NumericRuleSet digitsBetween($minLength, $maxLength) The field under validation must have a length between the given min and max.
  */
 class Rule
 {

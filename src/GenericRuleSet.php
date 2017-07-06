@@ -12,20 +12,23 @@ use Illuminate\Support\Str;
  *
  * @method StringRuleSet activeUrl() The field under validation must have a valid A or AAAA record according to the dns_get_record PHP function.
  * @method StringRuleSet email() The field under validation must be formatted as an e-mail address.
- * @method static StringRuleSet ip() The field under validation must be an IP address.
- * @method static StringRuleSet ipv4() The field under validation must be an IPv4 address.
- * @method static StringRuleSet ipv6() The field under validation must be an IPv6 address.
- * @method static StringRuleSet json() The field under validation must be a valid JSON string.
- * @method static StringRuleSet timezone() The field under validation must be a valid timezone identifier according to the timezone_identifiers_list PHP function
- * @method static StringRuleSet url() The field under validation must be a valid URL.
- * @method static FileRuleSet mimetypes(string ...$types) The file under validation must match one of the given MIME types. To determine the MIME type of the uploaded file, the file's contents will be read and the framework will attempt to guess the MIME type, which may be different from the client provided MIME type.
- * @method static FileRuleSet mimes(string ...$extensions) The file under validation must have a MIME type corresponding to one of the listed extensions.
+ * @method StringRuleSet ip() The field under validation must be an IP address.
+ * @method StringRuleSet ipv4() The field under validation must be an IPv4 address.
+ * @method StringRuleSet ipv6() The field under validation must be an IPv6 address.
+ * @method StringRuleSet json() The field under validation must be a valid JSON string.
+ * @method StringRuleSet timezone() The field under validation must be a valid timezone identifier according to the timezone_identifiers_list PHP function
+ * @method StringRuleSet url() The field under validation must be a valid URL.
+ * @method FileRuleSet mimetypes(string ...$types) The file under validation must match one of the given MIME types. To determine the MIME type of the uploaded file, the file's contents will be read and the framework will attempt to guess the MIME type, which may be different from the client provided MIME type.
+ * @method FileRuleSet mimes(string ...$extensions) The file under validation must have a MIME type corresponding to one of the listed extensions.
  *
- * @method static DateRuleSet date() The field under validation must be a valid date according to the strtotime PHP function.
- * @method static DateRuleSet after(Carbon|string $date) The field under validation must be a value after a given date. The dates will be passed into the  strtotime PHP function
- * @method static DateRuleSet afterOrEqual(Carbon|string $date) The field under validation must be a value after or equal to the given date. For more information, see the after rule.
- * @method static DateRuleSet before(Carbon|string $date) The field under validation must be a value preceding the given date. The dates will be passed into the PHP strtotime function.
- * @method static DateRuleSet beforeOrEqual(Carbon|string $date) The field under validation must be a value preceding or equal to the given date. The dates will be passed into the PHP strtotime function.
+ * @method DateRuleSet date() The field under validation must be a valid date according to the strtotime PHP function.
+ * @method DateRuleSet after(Carbon|string $date) The field under validation must be a value after a given date. The dates will be passed into the  strtotime PHP function
+ * @method DateRuleSet afterOrEqual(Carbon|string $date) The field under validation must be a value after or equal to the given date. For more information, see the after rule.
+ * @method DateRuleSet before(Carbon|string $date) The field under validation must be a value preceding the given date. The dates will be passed into the PHP strtotime function.
+ * @method DateRuleSet beforeOrEqual(Carbon|string $date) The field under validation must be a value preceding or equal to the given date. The dates will be passed into the PHP strtotime function.
+
+ * @method NumericRuleSet digits($length) The field under validation must be numeric and must have an exact length of value.
+ * @method NumericRuleSet digitsBetween($minLength, $maxLength) The field under validation must have a length between the given min and max.
  */
 class GenericRuleSet extends RuleSet
 {
@@ -56,6 +59,15 @@ class GenericRuleSet extends RuleSet
     function string(): StringRuleSet
     {
         return new StringRuleSet($this->rules);
+    }
+
+    /**
+     * The field under validation must be able to be cast as a boolean. Accepted input are true,  false, 1, 0, "1", and "0".
+     * @return GenericRuleSet
+     */
+    function boolean(): GenericRuleSet
+    {
+        return $this->appendIfNotExists('boolean');
     }
 
     /**
