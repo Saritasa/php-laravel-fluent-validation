@@ -1,13 +1,13 @@
-# Fluid Validation Rules builders for Laravel
+# Fluent Validation Rules builders for Laravel
 
-Use fluid-style syntax to build Laravel validation rules
+Use fluent-style syntax to build Laravel validation rules
 
 ## Usage
 
-Install the ```saritasa/laravel-fluid-validation``` package:
+Install the ```saritasa/laravel-fluent-validation``` package:
 
 ```bash
-$ composer require saritasa/laravel-fluid-validation
+$ composer require saritasa/laravel-fluent-validation
 ```
 
 **Example**:
@@ -39,7 +39,7 @@ Root of your rule builder.
 
 ## Resources
 
-* [Bug Tracker](http://github.com/saritasa/php-laravel-fluid-validation/issues)
-* [Code](http://github.com/saritasa/php-laravel-fluid-validation)
+* [Bug Tracker](http://github.com/saritasa/php-laravel-fluent-validation/issues)
+* [Code](http://github.com/saritasa/php-laravel-fluent-validation)
 * [Changes History](CHANGES.md)
-* [Authors](http://github.com/saritasa/php-laravel-fluid-validation/contributors)
+* [Authors](http://github.com/saritasa/php-laravel-fluent-validation/contributors)
