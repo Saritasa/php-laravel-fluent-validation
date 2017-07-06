@@ -46,6 +46,7 @@ class RuleSet implements IRule
         'same',
         'min',
         'max',
+        'between',
         'size',
     ];
 

@@ -22,6 +22,7 @@ class StringRuleSet extends RuleSet
 
     const TRIVIAL_STRING_RULES = [
         'activeUrl',
+        'email',
         'ip',
         'ipv4',
         'ipv6',
