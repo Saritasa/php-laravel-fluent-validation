@@ -2,12 +2,31 @@
 
 namespace Saritasa\Laravel\Validation;
 
+use Illuminate\Support\Str;
+
 /**
  * Rules, that are reasonable for strings only
+ *
+ * @method StringRuleSet ip() The field under validation must be an IP address.
+ * @method StringRuleSet ipv4() The field under validation must be an IPv4 address.
+ * @method StringRuleSet ipv6() The field under validation must be an IPv6 address.
+ * @method StringRuleSet json() The field under validation must be a valid JSON string.
+ * @method StringRuleSet timezone() The field under validation must be a valid timezone identifier according to the timezone_identifiers_list PHP function
+ * @method StringRuleSet url() The field under validation must be a valid URL.
  */
 class StringRuleSet extends RuleSet
 {
     const EXPOSED_RULES = ['email', 'regex', 'timezone'];
+
+    const TRIVIAL_STRING_RULES = [
+        'activeUrl',
+        'ip',
+        'ipv4',
+        'ipv6',
+        'json',
+        'timezone',
+        'url'
+    ];
 
     public function __construct(array $rules = [])
     {
@@ -40,12 +59,11 @@ class StringRuleSet extends RuleSet
         return $this->appendIfNotExists("regex:$pattern");
     }
 
-    /**
-     * The field under validation must be a valid timezone identifier according to the  timezone_identifiers_list PHP function.
-     * @return StringRuleSet
-     */
-    public function timezone(): StringRuleSet
+    function __call($name, $arguments)
     {
-        return $this->appendIfNotExists('timezone');
+        if (in_array($name, static::TRIVIAL_STRING_RULES)) {
+            return $this->appendIfNotExists(Str::snake($name));
+        }
+        return parent::__call($name, $arguments);
     }
 }

@@ -2,8 +2,10 @@
 
 namespace Saritasa\Laravel\Validation\Tests;
 
+use Illuminate\Support\Str;
 use PHPUnit\Framework\TestCase;
 use Saritasa\Laravel\Validation\Rule;
+use Saritasa\Laravel\Validation\RuleSet;
 
 /**
  * Test basic features
@@ -26,14 +28,14 @@ class RuleTest extends TestCase
         $this->assertEquals('numeric', Rule::numeric());
     }
 
-    public function testNullable()
+    /**
+     * For trivial rules camelCase method name is just converted to snake_case rule name
+     */
+    public function testTrivialRules()
     {
-        $this->assertEquals('nullable', Rule::nullable());
-    }
-
-    public function testPresent()
-    {
-        $this->assertEquals('present', Rule::present());
+        foreach (RuleSet::TRIVIAL_RULES as $ruleName) {
+            $this->assertEquals(Str::snake($ruleName), Rule::$ruleName());
+        }
     }
 
     public function testSame()

@@ -7,7 +7,7 @@ use Saritasa\Exceptions\NotImplementedException;
 /**
  * Root builder for validation rules
  *
- * @method static FileRuleSet dimensions(array $constraints) Get a dimensions constraint builder instance.
+ * @method static ImageRuleSet dimensions(array $constraints) Get a dimensions constraint builder instance.
  * @method static GenericRuleSet exists(string $table, string $column, \Closure $closure = null) Get a exists constraint builder instance.
  * @method static GenericRuleSet unique(string $table, string $column, \Closure $closure = null) Get a unique constraint builder instance.
  * @method static GenericRuleSet in(... $values) The field under validation must be included in the given list of values.
@@ -25,7 +25,16 @@ use Saritasa\Exceptions\NotImplementedException;
  * @method static GenericRuleSet requiredWithoutAll(string ...$otherFields) The field under validation must be present and not empty only when all of the other specified fields are not present.
  * @method static GenericRuleSet requiredIf(string $anotherField, $value) The field under validation must be present and not empty if the $anotherField field is equal to any value.
  * @method static GenericRuleSet requiredUnless(string $anotherField, $value) The field under validation must be present and not empty unless the $anotherField field is equal to any value.
- * @method static GenericRuleSet timezone() The field under validation must be a valid timezone identifier according to the  timezone_identifiers_list PHP function.
+
+ * @method static StringRuleSet ip() The field under validation must be an IP address.
+ * @method static StringRuleSet ipv4() The field under validation must be an IPv4 address.
+ * @method static StringRuleSet ipv6() The field under validation must be an IPv6 address.
+ * @method static StringRuleSet json() The field under validation must be a valid JSON string.
+ * @method static StringRuleSet timezone() The field under validation must be a valid timezone identifier according to the timezone_identifiers_list PHP function
+ * @method static StringRuleSet url() The field under validation must be a valid URL.
+
+ * @method static FileRuleSet mimetypes(string ...$types) The file under validation must match one of the given MIME types. To determine the MIME type of the uploaded file, the file's contents will be read and the framework will attempt to guess the MIME type, which may be different from the client provided MIME type.
+ * @method static FileRuleSet mimes(string ...$extensions) The file under validation must have a MIME type corresponding to one of the listed extensions.
  */
 class Rule
 {
@@ -91,15 +100,19 @@ class Rule
     public static function __callStatic($name, $arguments)
     {
         $ruleSet = null;
-        if (in_array($name, StringRuleSet::EXPOSED_RULES)) {
+        if (in_array($name, StringRuleSet::EXPOSED_RULES)
+            || in_array($name, StringRuleSet::TRIVIAL_STRING_RULES)) {
             $ruleSet = new StringRuleSet();
         } elseif (in_array($name, NumericRuleSet::EXPOSED_RULES)) {
             $ruleSet = new NumericRuleSet();
         } elseif (in_array($name, DatabaseRuleSet::EXPOSED_RULES)) {
             $ruleSet = new DatabaseRuleSet();
         } elseif (in_array($name, GenericRuleSet::EXPOSED_RULES)
+            || in_array($name, RuleSet::TRIVIAL_RULES)
             || in_array($name, RuleSet::BASIC_RULES)) {
             $ruleSet = new GenericRuleSet();
+        } elseif (in_array($name, FileRuleSet::EXPOSED_RULES)) {
+            $ruleSet = new FileRuleSet();
         } else {
             throw new NotImplementedException("Requested unknown rule $name");
         }

@@ -4,6 +4,7 @@ namespace Saritasa\Laravel\Validation\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Saritasa\Laravel\Validation\Rule;
+use Saritasa\Laravel\Validation\StringRuleSet;
 
 /**
  * Check string rules
@@ -31,5 +32,12 @@ class StringRulesTest extends TestCase
     {
         $rules = Rule::string()->email()->email()->regex('@mail.ru$')->regex('@mail.ru$')->email();
         $this->assertEquals('string|email|regex:/@mail.ru$/', $rules);
+    }
+
+    public function testTrivialRules()
+    {
+        foreach (StringRuleSet::TRIVIAL_STRING_RULES as $ruleName) {
+            $this->assertEquals('string|'.$ruleName, Rule::$ruleName());
+        }
     }
 }

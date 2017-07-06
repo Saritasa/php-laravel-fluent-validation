@@ -23,4 +23,22 @@ class FileRulesTest extends TestCase
         $rules = Rule::image()->file();
         $this->assertEquals('image|file', $rules->toString());
     }
+
+    public function testMimes()
+    {
+        $rules = Rule::file()->mimes('png', 'jpg', 'svg');
+        $this->assertEquals('file|mimes:png,jpg,svg', $rules);
+
+        $rules = Rule::mimes('png', 'jpg', 'svg');
+        $this->assertEquals('file|mimes:png,jpg,svg', $rules);
+
+        $rules = Rule::required()->mimes('png', 'jpg', 'svg');
+        $this->assertEquals('required|file|mimes:png,jpg,svg', $rules);
+    }
+
+    public function testMimetypes()
+    {
+        $rules = Rule::file()->mimetypes('video/avi', 'video/mpeg', 'video/quicktime');
+        $this->assertEquals('file|mimetypes:video/avi,video/mpeg,video/quicktime', $rules);
+    }
 }

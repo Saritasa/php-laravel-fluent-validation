@@ -2,12 +2,22 @@
 
 namespace Saritasa\Laravel\Validation;
 
-use Saritasa\Exceptions\NotImplementedException;
+use Illuminate\Support\Str;
 
 /**
  * @method FileRuleSet dimensions(array $constraints) Get a dimensions constraint builder instance.
  * @method GenericRuleSet exists(string $table, string $column, \Closure $closure = null) Get a exists constraint builder instance.
  * @method GenericRuleSet unique(string $table, string $column, \Closure $closure = null) Get a unique constraint builder instance.
+ *
+ * @method static StringRuleSet ip() The field under validation must be an IP address.
+ * @method static StringRuleSet ipv4() The field under validation must be an IPv4 address.
+ * @method static StringRuleSet ipv6() The field under validation must be an IPv6 address.
+ * @method static StringRuleSet json() The field under validation must be a valid JSON string.
+ * @method static StringRuleSet timezone() The field under validation must be a valid timezone identifier according to the timezone_identifiers_list PHP function
+ * @method static StringRuleSet url() The field under validation must be a valid URL.
+
+ * @method static FileRuleSet mimetypes(string ...$types) The file under validation must match one of the given MIME types. To determine the MIME type of the uploaded file, the file's contents will be read and the framework will attempt to guess the MIME type, which may be different from the client provided MIME type.
+ * @method static FileRuleSet mimes(string ...$extensions) The file under validation must have a MIME type corresponding to one of the listed extensions.
  */
 class GenericRuleSet extends RuleSet
 {
@@ -58,8 +68,12 @@ class GenericRuleSet extends RuleSet
             $ruleSet = new IntRuleSet($this->rules);
         } elseif (in_array($name, DatabaseRuleSet::EXPOSED_RULES)) {
             $ruleSet = new DatabaseRuleSet($this->rules);
+        } elseif (in_array($name, static::TRIVIAL_RULES)) {
+            return $this->appendIfNotExists(Str::snake($name));
+        } elseif (in_array($name, FileRuleSet::EXPOSED_RULES)) {
+            $ruleSet = new FileRuleSet($this->rules);
         } else {
-            throw new NotImplementedException("Requested unknown rule $name");
+            return parent::__call($name, $arguments);
         }
         return call_user_func_array([$ruleSet, $name], $arguments);
     }
