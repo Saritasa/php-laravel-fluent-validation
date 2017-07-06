@@ -13,18 +13,23 @@ class StringRulesTest extends TestCase
     public function testFluidString()
     {
         $rules = Rule::required()->string()->email()->requiredWithout('facebook_id');
-        $this->assertEquals('required|string|email|required_without:facebook_id', $rules->toString());
+        $this->assertEquals('required|string|email|required_without:facebook_id', $rules);
     }
 
     public function testRegex()
     {
         $rules = Rule::string()->regex('/^\w+[\w-\.]*\w+$/');
-        $this->assertEquals('string|regex:/^\w+[\w-\.]*\w+$/', $rules->toString());
+        $this->assertEquals('string|regex:/^\w+[\w-\.]*\w+$/', $rules);
+    }
+
+    public function testTimezone()
+    {
+        $this->assertEquals('string|timezone', Rule::timezone());
     }
 
     public function testDoNotRepeat()
     {
         $rules = Rule::string()->email()->email()->regex('@mail.ru$')->regex('@mail.ru$')->email();
-        $this->assertEquals('string|email|regex:/@mail.ru$/', $rules->toString());
+        $this->assertEquals('string|email|regex:/@mail.ru$/', $rules);
     }
 }

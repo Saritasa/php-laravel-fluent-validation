@@ -13,7 +13,7 @@ $ composer require saritasa/laravel-fluid-validation
 **Example**:
 ```php
 $rules = [
-    'id' => Rule::int()->required()->toString(),
+    'id' => Rule::int()->required(),
     'name' => Rule::string()->required()->minLength(3)->toString(),
     'email' => Rule::string()->required()->email()->toArray()
 ]

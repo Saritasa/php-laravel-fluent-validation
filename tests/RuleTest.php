@@ -13,20 +13,37 @@ class RuleTest extends TestCase
 
     public function testString()
     {
-        $rules = Rule::string();
-        $this->assertEquals('string', $rules->toString());
+        $this->assertEquals('string', Rule::string());
     }
 
     public function testInt()
     {
-        $rules = Rule::int();
-        $this->assertEquals('integer', $rules->toString());
+        $this->assertEquals('integer', Rule::int());
     }
 
     public function testNumeric()
     {
-        $rules = Rule::numeric();
-        $this->assertEquals('numeric', $rules->toString());
+        $this->assertEquals('numeric', Rule::numeric());
+    }
+
+    public function testNullable()
+    {
+        $this->assertEquals('nullable', Rule::nullable());
+    }
+
+    public function testPresent()
+    {
+        $this->assertEquals('present', Rule::present());
+    }
+
+    public function testSame()
+    {
+        $this->assertEquals('same:password_confirmation', Rule::same('password_confirmation'));
+    }
+
+    public function testSize()
+    {
+        $this->assertEquals('size:20', Rule::size(20));
     }
 
     /**

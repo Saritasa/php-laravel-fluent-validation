@@ -2,23 +2,17 @@
 
 namespace Saritasa\Laravel\Validation;
 
+/**
+ * Rules, that are reasonable for numeric values only
+ */
 class NumericRuleSet extends RuleSet
 {
-    const EXPOSED_RULES = ['min', 'max'];
+    const EXPOSED_RULES = [];
+
     protected $primaryRuleName = 'numeric';
 
     public function __construct(array $rules = [])
     {
         parent::__construct(self::mergeIfNotExists($this->primaryRuleName, $rules));
-    }
-
-    public function min($minimalValue): NumericRuleSet
-    {
-        return $this->appendIfNotExists("min:$minimalValue");
-    }
-
-    public function max($maximalValue): NumericRuleSet
-    {
-        return $this->appendIfNotExists("max:$maximalValue");
     }
 }
