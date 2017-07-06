@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
  * @method GenericRuleSet exists(string $table, string $column, \Closure $closure = null) Get a exists constraint builder instance.
  * @method GenericRuleSet unique(string $table, string $column, \Closure $closure = null) Get a unique constraint builder instance.
  *
+ * @method StringRuleSet activeUrl() The field under validation must have a valid A or AAAA record according to the dns_get_record PHP function.
+ * @method StringRuleSet email() The field under validation must be formatted as an e-mail address.
  * @method static StringRuleSet ip() The field under validation must be an IP address.
  * @method static StringRuleSet ipv4() The field under validation must be an IPv4 address.
  * @method static StringRuleSet ipv6() The field under validation must be an IPv6 address.

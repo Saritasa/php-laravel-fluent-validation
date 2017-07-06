@@ -7,6 +7,8 @@ use Illuminate\Support\Str;
 /**
  * Rules, that are reasonable for strings only
  *
+ * @method StringRuleSet activeUrl() The field under validation must have a valid A or AAAA record according to the dns_get_record PHP function.
+ * @method StringRuleSet email() The field under validation must be formatted as an e-mail address.
  * @method StringRuleSet ip() The field under validation must be an IP address.
  * @method StringRuleSet ipv4() The field under validation must be an IPv4 address.
  * @method StringRuleSet ipv6() The field under validation must be an IPv6 address.
@@ -31,15 +33,6 @@ class StringRuleSet extends RuleSet
     public function __construct(array $rules = [])
     {
         parent::__construct(self::mergeIfNotExists('string', $rules));
-    }
-
-    /**
-     * The field under validation must be formatted as an e-mail address.
-     * @return StringRuleSet
-     */
-    public function email(): StringRuleSet
-    {
-        return $this->appendIfNotExists('email');
     }
 
     /**

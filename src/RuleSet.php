@@ -6,7 +6,6 @@ use Saritasa\Exceptions\NotImplementedException;
 
 /**
  * @method GenericRuleSet accepted()
- * @method GenericRuleSet active_url()
  *
  */
 class RuleSet implements IRule

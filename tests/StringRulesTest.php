@@ -2,6 +2,7 @@
 
 namespace Saritasa\Laravel\Validation\Tests;
 
+use Illuminate\Support\Str;
 use PHPUnit\Framework\TestCase;
 use Saritasa\Laravel\Validation\Rule;
 use Saritasa\Laravel\Validation\StringRuleSet;
@@ -37,7 +38,7 @@ class StringRulesTest extends TestCase
     public function testTrivialRules()
     {
         foreach (StringRuleSet::TRIVIAL_STRING_RULES as $ruleName) {
-            $this->assertEquals('string|'.$ruleName, Rule::$ruleName());
+            $this->assertEquals('string|'.Str::snake($ruleName), Rule::$ruleName());
         }
     }
 }

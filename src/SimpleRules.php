@@ -76,6 +76,23 @@ trait SimpleRules
     }
 
     /**
+     * The field under validation must have a size between the given min and max. Strings, numerics, arrays, and files are evaluated in the same fashion as the size rule.
+     * @param integer $minimalValue For numeric data, value corresponds to a given integer value.
+     *                              For an array, size corresponds to the count of the array.
+     *                              For string data, value corresponds to the number of characters.
+     *                              For files, size corresponds to the file size in kilobytes.
+     * @param integer $maximalValue For numeric data, value corresponds to a given integer value.
+     *                              For an array, size corresponds to the count of the array.
+     *                              For string data, value corresponds to the number of characters.
+     *                              For files, size corresponds to the file size in kilobytes.
+     * @return static
+     */
+    public function between($minimalValue, $maximalValue)
+    {
+        return $this->appendIfNotExists("between:$minimalValue,$maximalValue");
+    }
+
+    /**
      * The field under validation must have a size matching the given value.
      *
      * For string data, value corresponds to the number of characters.

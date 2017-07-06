@@ -5,6 +5,17 @@ namespace Saritasa\Laravel\Validation;
 use Illuminate\Validation\Rules\Dimensions;
 use Saritasa\Exceptions\NotImplementedException;
 
+/**
+ * Image validation rules. In addition to file validation has image dimensions rules
+ * (width, height, ratio of width and height).
+ *
+ * @method ImageRuleSet width(int $width)
+ * @method ImageRuleSet height(int $height)
+ * @method ImageRuleSet minWidth(int $width)
+ * @method ImageRuleSet minHeight(int $height)
+ * @method ImageRuleSet maxWidth(int $width)
+ * @method ImageRuleSet maxHeight(int $height)
+ */
 class ImageRuleSet extends FileRuleSet
 {
     /** @var  Dimensions */
@@ -36,7 +47,7 @@ class ImageRuleSet extends FileRuleSet
             if ($this->dimensions == null) {
                 $this->dimensions = new Dimensions();
             }
-            $this->dimensions->$name($arguments);
+            call_user_func_array([$this->dimensions, $name], $arguments);
             return $this;
         }
         throw new NotImplementedException("Unknown Image Rule $name");
@@ -44,6 +55,7 @@ class ImageRuleSet extends FileRuleSet
 
     /**
      * @param array|\Closure|Dimensions $constraints
+     * @return $this
      */
     public function dimensions($constraints) {
         if ($constraints instanceof Dimensions) {
@@ -54,6 +66,7 @@ class ImageRuleSet extends FileRuleSet
             $this->dimensions = new Dimensions();
             $constraints($this->dimensions);
         }
+        return $this;
     }
 
     public function toArray(): array
