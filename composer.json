@@ -14,6 +14,7 @@
         "php": ">=7.0",
         "illuminate/database": "^5.4",
         "illuminate/support": "^5.4",
+        "illuminate/validation": "^5.4",
         "saritasa/php-common": "^1.0"
     },
     "require-dev": {

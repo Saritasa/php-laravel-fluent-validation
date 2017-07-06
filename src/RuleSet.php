@@ -2,8 +2,10 @@
 
 namespace Saritasa\Laravel\Validation;
 
-class RuleSet
+class RuleSet implements IRule
 {
+    const BASIC_RULES = ['required', 'requiredWith', 'requiredWithout', 'in', 'notIn'];
+
     /** @var array */
     protected $rules;
 
@@ -30,6 +32,21 @@ class RuleSet
         return $this->appendIfNotExists("required_without:$otherField");
     }
 
+    public function in($values)
+    {
+        return $this->appendIfNotExists(\Illuminate\Validation\Rule::in($values));
+    }
+
+    public function notIn($values)
+    {
+        return $this->appendIfNotExists(\Illuminate\Validation\Rule::notIn($values));
+    }
+
+
+
+
+
+
     protected function appendIfNotExists(string $rule)
     {
         if (in_array($rule, $this->rules)) {
@@ -50,7 +67,7 @@ class RuleSet
         }
     }
 
-    public function toArray()
+    public function toArray(): array
     {
         return array_map(function($rule) {
             if ($rule instanceof IRule) {
@@ -61,8 +78,13 @@ class RuleSet
         }, $this->rules);
     }
 
-    public function toString()
+    public function toString(): string
     {
         return implode('|', $this->toArray());
+    }
+
+    function __toString(): string
+    {
+        return $this->toString();
     }
 }

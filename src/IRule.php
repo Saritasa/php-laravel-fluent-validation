@@ -4,5 +4,5 @@ namespace Saritasa\Laravel\Validation;
 
 interface IRule
 {
-    function toString(): string;
+    function __toString(): string;
 }

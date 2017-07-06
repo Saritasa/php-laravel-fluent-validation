@@ -4,6 +4,8 @@ namespace Saritasa\Laravel\Validation;
 
 class StringRuleSet extends RuleSet
 {
+    const EXPOSED_RULES = ['email', 'regex'];
+
     public function __construct(array $rules = [])
     {
         parent::__construct(self::mergeIfNotExists('string', $rules));
