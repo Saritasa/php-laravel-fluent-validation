@@ -8,7 +8,8 @@ use Saritasa\Exceptions\NotImplementedException;
  * Root builder for validation rules
  *
  * @method static FileRuleSet dimensions(array $constraints) Get a dimensions constraint builder instance.
- * @method static DatabaseRuleSet exists(string $table, string $column, \Closure $closure = null) Get a exists constraint builder instance.
+ * @method static GenericRuleSet exists(string $table, string $column, \Closure $closure = null) Get a exists constraint builder instance.
+ * @method static GenericRuleSet unique(string $table, string $column, \Closure $closure = null) Get a unique constraint builder instance.
  * @method static GenericRuleSet in(... $values) The field under validation must be included in the given list of values.
  * @method static GenericRuleSet notIn(... $values) The field under validation must not be included in the given list of values.
  * @method static GenericRuleSet nullable() The field under validation may be null. This is particularly useful when validating primitive such as strings and integers that can contain null values.
@@ -77,13 +78,23 @@ class Rule
         return new FileRuleSet();
     }
 
+    /**
+     * The file under validation must be an image (jpeg, png, bmp, gif, or svg)
+     * @param array|\Closure|\Illuminate\Validation\Rules\Dimensions $constraints
+     * @return ImageRuleSet
+     */
+    static function image($constraints = []): ImageRuleSet
+    {
+        return new ImageRuleSet([], $constraints);
+    }
+
     public static function __callStatic($name, $arguments)
     {
         $ruleSet = null;
         if (in_array($name, StringRuleSet::EXPOSED_RULES)) {
             $ruleSet = new StringRuleSet();
-        } elseif (in_array($name, IntRuleSet::EXPOSED_RULES)) {
-            $ruleSet = new IntRuleSet();
+        } elseif (in_array($name, NumericRuleSet::EXPOSED_RULES)) {
+            $ruleSet = new NumericRuleSet();
         } elseif (in_array($name, DatabaseRuleSet::EXPOSED_RULES)) {
             $ruleSet = new DatabaseRuleSet();
         } elseif (in_array($name, GenericRuleSet::EXPOSED_RULES)

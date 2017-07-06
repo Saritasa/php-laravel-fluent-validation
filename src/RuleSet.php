@@ -243,7 +243,7 @@ class RuleSet implements IRule
             } else {
                 return $rule;
             }
-        }, $this->rules);
+        }, array_filter($this->rules));
     }
 
     public function toString(): string

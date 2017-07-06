@@ -8,11 +8,23 @@ class FileRuleSet extends RuleSet
 
     public function __construct(array $rules = [])
     {
-        parent::__construct(self::mergeIfNotExists('file', $rules));
+        if ($rules) {
+            if (!in_array('image', $rules)) {
+                $rules = self::mergeIfNotExists('file', $rules);
+            }
+        } else {
+            $rules = ['file'];
+        }
+
+        parent::__construct($rules);
     }
 
-    public function dimensions(array $constraints): FileRuleSet
+    /**
+     * @param array|\Closure $constraints
+     * @return ImageRuleSet
+     */
+    public function image($constraints = []): ImageRuleSet
     {
-        return new ImageRuleSet($constraints, $this->rules);
+        return new ImageRuleSet($this->rules, $constraints);
     }
 }

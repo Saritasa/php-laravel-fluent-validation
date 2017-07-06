@@ -20,7 +20,7 @@ class DatabaseRuleSet extends GenericRuleSet
                 ."'validation.allow_db' = true");
         }
 
-        $this->rules = $rules;
+        parent::__construct($rules);
     }
 
     /**
@@ -28,28 +28,35 @@ class DatabaseRuleSet extends GenericRuleSet
      *
      * @param  string $table
      * @param  string $column
-     * @param \Closure|null $closure callback, that will receive \Illuminate\Validation\Rules\Exists $rule
+     * @param \Closure|null $callback callback, that will receive \Illuminate\Validation\Rules\Exists $rule
      * @return GenericRuleSet
      * @see \Illuminate\Validation\Rules\Exists
      */
-    public function exists($table, $column = 'NULL', \Closure $closure = null): GenericRuleSet
+    public function exists($table, $column = 'NULL', \Closure $callback = null): GenericRuleSet
     {
         $rule = \Illuminate\Validation\Rule::exists($table, $column);
-        if ($closure !== null) {
-            $closure($rule);
+        if ($callback !== null) {
+            $callback($rule);
         }
-        return $this->appendIfNotExists($rule);
+        return $this->appendIfNotExists((string)$rule);
     }
 
     /**
      * Get a unique constraint builder instance.
      *
-     * @param  string  $table
-     * @param  string  $column
+     * @param  string $table
+     * @param  string $column
+     * @param \Closure|null $callback callback, that will receive \Illuminate\Validation\Rules\Exists $rule
      * @return GenericRuleSet
      */
-    public function unique($table, $column = 'NULL'): GenericRuleSet
+    public function unique(string $table, string $column = 'NULL', \Closure $callback = null): GenericRuleSet
     {
-        return $this->appendIfNotExists(\Illuminate\Validation\Rule::unique($table, $column));
+        if ($callback !== null) {
+            $rule = \Illuminate\Validation\Rule::unique($table, $column);
+            $callback($rule);
+        } else  {
+            $rule = "unique:$table,$column";
+        }
+        return $this->appendIfNotExists((string)$rule);
     }
 }

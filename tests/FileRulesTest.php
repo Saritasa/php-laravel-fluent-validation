@@ -17,4 +17,10 @@ class FileRulesTest extends TestCase
         $rules = Rule::file()->min(10)->max(1000);
         $this->assertEquals('file|min:10|max:1000', $rules);
     }
+
+    public function testImageFile()
+    {
+        $rules = Rule::image()->file();
+        $this->assertEquals('image|file', $rules->toString());
+    }
 }
