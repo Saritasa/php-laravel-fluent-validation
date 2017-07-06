@@ -4,7 +4,17 @@ namespace Saritasa\Laravel\Validation;
 
 class RuleSet implements IRule
 {
-    const BASIC_RULES = ['required', 'requiredWith', 'requiredWithout', 'in', 'notIn'];
+    const BASIC_RULES = [
+        'in',
+        'notIn',
+        'required',
+        'requiredIf',
+        'requiredUnless',
+        'requiredWith',
+        'requiredWithAll',
+        'requiredWithout',
+        'requiredWithoutAll',
+    ];
 
     /** @var array */
     protected $rules;
@@ -15,6 +25,13 @@ class RuleSet implements IRule
     }
 
     /**
+    The field under validation must be present in the input data and not empty. A field is considered "empty" if one of the following conditions are true:
+
+    The value is null.
+    The value is an empty string.
+    The value is an empty array or empty Countable object.
+    The value is an uploaded file with no path.
+
      * @return static
      */
     public function required()
@@ -22,27 +39,100 @@ class RuleSet implements IRule
         return $this->appendIfNotExists('required');
     }
 
-    public function requiredWith(string $otherField)
+    /**
+     * The field under validation must be present and not empty only if any of the other specified fields are present.
+     * @param \string[] $otherFields
+     * @return static
+     */
+    public function requiredWith(string ...$otherFields)
     {
-        return $this->appendIfNotExists("required_with:$otherField");
+        return $this->appendIfNotExists("required_with:".implode(',', $otherFields));
     }
 
-    public function requiredWithout(string $otherField)
+    /**
+     * The field under validation must be present and not empty only if all of the other specified fields are present.
+     * @param \string[] ...$otherFields
+     * @return static
+     */
+    public function requiredWithAll(string ...$otherFields)
     {
-        return $this->appendIfNotExists("required_without:$otherField");
+        return $this->appendIfNotExists("required_with_all:".implode(',', $otherFields));
     }
 
-    public function in($values)
+    /**
+     * The field under validation must be present and not empty only when any of the other specified fields are not present.
+     * @param \string[] ...$otherFields
+     * @return RuleSet
+     */
+    public function requiredWithout(string ...$otherFields)
     {
-        return $this->appendIfNotExists(\Illuminate\Validation\Rule::in($values));
+        return $this->appendIfNotExists("required_without:".implode(',', $otherFields));
     }
 
-    public function notIn($values)
+    /**
+     * The field under validation must be present and not empty only when all of the other specified fields are not present.
+     * @param \string[] ...$otherFields
+     * @return RuleSet
+     */
+    public function requiredWithoutAll(string ...$otherFields)
     {
-        return $this->appendIfNotExists(\Illuminate\Validation\Rule::notIn($values));
+        return $this->appendIfNotExists("required_without_all:".implode(',', $otherFields));
+    }
+
+    /**
+     * The field under validation must be present and not empty if the anotherfield field is equal to any value.
+     * @param string $anotherField
+     * @param mixed $value
+     * @return RuleSet
+     */
+    public function requiredIf(string $anotherField, $value)
+    {
+        return $this->appendIfNotExists("required_if:$anotherField,$value");
+    }
+
+    /**
+     * The field under validation must be present and not empty unless the anotherfield field is equal to any value.
+     * @param string $anotherField
+     * @param mixed $value
+     * @return RuleSet
+     */
+    public function requiredUnless(string $anotherField, $value)
+    {
+        return $this->appendIfNotExists("required_unless:$anotherField,$value");
     }
 
 
+    /**
+     * The field under validation must be included in the given list of values.
+     * @param array ...$values
+     * @return RuleSet
+     */
+    public function in(...$values)
+    {
+        $val = count($values) == 1 ? $values[0] : $values;
+        return $this->appendIfNotExists(\Illuminate\Validation\Rule::in($val));
+    }
+
+    /**
+     * The field under validation must not be included in the given list of values.
+     * @param array ...$values
+     * @return RuleSet
+     */
+    public function notIn(...$values)
+    {
+        $val = count($values) == 1 ? $values[0] : $values;
+        return $this->appendIfNotExists(\Illuminate\Validation\Rule::notIn($val));
+    }
+
+    /**
+     * The field under validation must exist in anotherfield's values.
+     * @param string $anotherFiled
+     * @return RuleSet
+     */
+    public function inArray(string $anotherFiled)
+    {
+        return $this->appendIfNotExists("in_array:$anotherFiled");
+    }
 
 
 
@@ -71,7 +161,7 @@ class RuleSet implements IRule
     {
         return array_map(function($rule) {
             if ($rule instanceof IRule) {
-                return $rule->toString();
+                return (string)$rule;
             } else {
                 return $rule;
             }

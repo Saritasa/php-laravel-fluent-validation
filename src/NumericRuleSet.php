@@ -5,7 +5,7 @@ namespace Saritasa\Laravel\Validation;
 class NumericRuleSet extends RuleSet
 {
     const EXPOSED_RULES = ['min', 'max'];
-    protected $primaryRuleName = 'integer';
+    protected $primaryRuleName = 'numeric';
 
     public function __construct(array $rules = [])
     {

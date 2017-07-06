@@ -5,6 +5,9 @@ namespace Saritasa\Laravel\Validation\Tests;
 use PHPUnit\Framework\TestCase;
 use Saritasa\Laravel\Validation\Rule;
 
+/**
+ * Check string rules
+ */
 class StringRulesTest extends TestCase
 {
     public function testFluidString()

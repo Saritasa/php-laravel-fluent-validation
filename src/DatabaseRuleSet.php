@@ -10,6 +10,8 @@ use Saritasa\Exceptions\ConfigurationException;
  */
 class DatabaseRuleSet extends GenericRuleSet
 {
+    const EXPOSED_RULES = ['exists', 'unique'];
+
     public function __construct(array $rules = [])
     {
         if (!Config::get('validation.allow_db', false)) {
@@ -24,13 +26,19 @@ class DatabaseRuleSet extends GenericRuleSet
     /**
      * Get a exists constraint builder instance.
      *
-     * @param  string  $table
-     * @param  string  $column
+     * @param  string $table
+     * @param  string $column
+     * @param \Closure|null $closure callback, that will receive \Illuminate\Validation\Rules\Exists $rule
      * @return GenericRuleSet
+     * @see \Illuminate\Validation\Rules\Exists
      */
-    public function exists($table, $column = 'NULL'): GenericRuleSet
+    public function exists($table, $column = 'NULL', \Closure $closure = null): GenericRuleSet
     {
-        return $this->appendIfNotExists(\Illuminate\Validation\Rule::exists($table, $column));
+        $rule = \Illuminate\Validation\Rule::exists($table, $column);
+        if ($closure !== null) {
+            $closure($rule);
+        }
+        return $this->appendIfNotExists($rule);
     }
 
     /**
