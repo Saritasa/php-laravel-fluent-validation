@@ -58,6 +58,15 @@ class RuleSet implements IRule
         $this->rules = $rules;
     }
 
+    /**
+     * Instead of implementing lots of trivial methods, which just return constant rule,
+     * proxy calls to method, that appends known string rules to current set.
+     *
+     * @param string $name Method name
+     * @param array $arguments
+     * @return static
+     * @throws NotImplementedException if requested method is unknown
+     */
     function __call($name, $arguments)
     {
         if (in_array($name, static::TRIVIAL_RULES)) {
@@ -69,6 +78,7 @@ class RuleSet implements IRule
 
     /**
      * Append rule to current set of rules, but only if it doesn't contain this rule yet.
+     * Creates new immutable set of rules, if rule was added.
      *
      * @param string $rule
      * @return $this|static
@@ -83,6 +93,14 @@ class RuleSet implements IRule
         }
     }
 
+    /**
+     * Append rule to array, if it is not contained in array yet.
+     * Original array remains intact, new one is returned on changes.
+     *
+     * @param string $rule
+     * @param array $rules
+     * @return array
+     */
     protected static function mergeIfNotExists(string $rule, array $rules = []): array
     {
         if (in_array($rule, $rules)) {
@@ -93,6 +111,7 @@ class RuleSet implements IRule
         }
     }
 
+    /** Return current rule set as array */
     public function toArray(): array
     {
         return array_map(function($rule) {
@@ -104,11 +123,13 @@ class RuleSet implements IRule
         }, array_filter($this->rules));
     }
 
+    /** Create string representation for current set of rules */
     public function toString(): string
     {
         return implode('|', $this->toArray());
     }
 
+    /** Create string representation for current set of rules */
     function __toString(): string
     {
         return $this->toString();

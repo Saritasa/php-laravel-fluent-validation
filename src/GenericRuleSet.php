@@ -2,10 +2,11 @@
 
 namespace Saritasa\Laravel\Validation;
 
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 /**
- * @method FileRuleSet dimensions(array $constraints) Get a dimensions constraint builder instance.
+ * @method ImageRuleSet dimensions(array $constraints) Get a dimensions constraint builder instance.
  * @method GenericRuleSet exists(string $table, string $column, \Closure $closure = null) Get a exists constraint builder instance.
  * @method GenericRuleSet unique(string $table, string $column, \Closure $closure = null) Get a unique constraint builder instance.
  *
@@ -17,9 +18,14 @@ use Illuminate\Support\Str;
  * @method static StringRuleSet json() The field under validation must be a valid JSON string.
  * @method static StringRuleSet timezone() The field under validation must be a valid timezone identifier according to the timezone_identifiers_list PHP function
  * @method static StringRuleSet url() The field under validation must be a valid URL.
-
  * @method static FileRuleSet mimetypes(string ...$types) The file under validation must match one of the given MIME types. To determine the MIME type of the uploaded file, the file's contents will be read and the framework will attempt to guess the MIME type, which may be different from the client provided MIME type.
  * @method static FileRuleSet mimes(string ...$extensions) The file under validation must have a MIME type corresponding to one of the listed extensions.
+ *
+ * @method static DateRuleSet date() The field under validation must be a valid date according to the strtotime PHP function.
+ * @method static DateRuleSet after(Carbon|string $date) The field under validation must be a value after a given date. The dates will be passed into the  strtotime PHP function
+ * @method static DateRuleSet afterOrEqual(Carbon|string $date) The field under validation must be a value after or equal to the given date. For more information, see the after rule.
+ * @method static DateRuleSet before(Carbon|string $date) The field under validation must be a value preceding the given date. The dates will be passed into the PHP strtotime function.
+ * @method static DateRuleSet beforeOrEqual(Carbon|string $date) The field under validation must be a value preceding or equal to the given date. The dates will be passed into the PHP strtotime function.
  */
 class GenericRuleSet extends RuleSet
 {
@@ -70,6 +76,8 @@ class GenericRuleSet extends RuleSet
             $ruleSet = new IntRuleSet($this->rules);
         } elseif (in_array($name, DatabaseRuleSet::EXPOSED_RULES)) {
             $ruleSet = new DatabaseRuleSet($this->rules);
+        } elseif (in_array($name, DateRuleSet::EXPOSED_RULES)) {
+            $ruleSet = new DateRuleSet($this->rules);
         } elseif (in_array($name, static::TRIVIAL_RULES)) {
             return $this->appendIfNotExists(Str::snake($name));
         } elseif (in_array($name, FileRuleSet::EXPOSED_RULES)) {

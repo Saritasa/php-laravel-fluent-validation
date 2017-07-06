@@ -28,6 +28,11 @@ class RuleTest extends TestCase
         $this->assertEquals('numeric', Rule::numeric());
     }
 
+    public function testDate()
+    {
+        $this->assertEquals('date', Rule::date());
+    }
+
     /**
      * For trivial rules camelCase method name is just converted to snake_case rule name
      */
