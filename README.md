@@ -16,9 +16,13 @@ $rules = [
 * Hints about mistypings (if you use smart IDE, like PHPStorm)
 
 ### Examples
-Inline documentation: ![Inline documentation](docs/inline_docs.png)
+**Inline documentation:**
 
-Inellisence: ![Intelisence](docs/intellisence.png)
+![Inline documentation](docs/inline_docs.png)
+
+**Inellisence:**
+
+![Intelisence](docs/intellisence.png)
 
 ## Installation
 
