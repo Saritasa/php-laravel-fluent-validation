@@ -24,6 +24,7 @@ use Saritasa\Exceptions\NotImplementedException;
  * @method static GenericRuleSet min($minValue) The field under validation must have a minimum value. Strings, numerics, arrays, and files are evaluated in the same fashion as the size rule.
  * @method static GenericRuleSet max($maxValue) The field under validation must be less than or equal to a maximum value. Strings, numerics, arrays, and files are evaluated in the same fashion as the size rule.
  * @method static GenericRuleSet inArray(string $anotherField) The field under validation must exist in $anotherField's values.
+ * @method static GenericRuleSet sometimes() Run validation checks against a field only if that field is present in the input array.
  * @method static GenericRuleSet requiredWith(string ...$otherFields) This field is required, if another field has value
  * @method static GenericRuleSet requiredWithAll(string ...$otherFields) The field under validation must be present and not empty only if all of the other specified fields are present.
  * @method static GenericRuleSet requiredWithout(string ...$otherFields) This field is required, if another field has no value

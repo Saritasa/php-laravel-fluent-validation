@@ -117,4 +117,13 @@ trait SimpleRules
     {
         return $this->appendIfNotExists("size:$value");
     }
+
+    /**
+     * Run validation checks against a field only if that field is present in the input array.
+     * @return static
+     */
+    public function sometimes()
+    {
+        return $this->appendIfNotExists("sometimes");
+    }
 }
