@@ -2,14 +2,6 @@
 
 Use fluent-style syntax to build Laravel validation rules
 
-## Usage
-
-Install the ```saritasa/laravel-fluent-validation``` package:
-
-```bash
-$ composer require saritasa/laravel-fluent-validation
-```
-
 **Example**:
 ```php
 $rules = [
@@ -18,11 +10,36 @@ $rules = [
     'email' => Rule::string()->required()->email()->toArray()
 ]
 ```
-
 ## Advantages
 * Strong typing
 * Intellisence for available rules and parameters (if you use smart IDE, like PHPStorm)
 * Hints about mistypings (if you use smart IDE, like PHPStorm)
+
+### Examples
+Inline documentation: ![Inline documentation](docs/inline_docs.png)
+
+Inellisence: ![Intelisence](docs/intellisense.png)
+
+## Installation
+
+Install the ```saritasa/laravel-fluent-validation``` package:
+
+```bash
+$ composer require saritasa/laravel-fluent-validation
+```
+Add the FluentValidationServiceProvider in ``config/app.php``:
+
+```php
+'providers' => array(
+    // ...
+    Saritasa\Laravel\Validation\FluentValidationServiceProvider::class,
+)
+```
+*Note:* You can omit service provider registration, but then you must call
+*->toString()* or *->toArray()* on each builder.
+If service provider is registered, manual casting of rule to string or array
+is not necessary.
+
 
 ## Available classes
 
