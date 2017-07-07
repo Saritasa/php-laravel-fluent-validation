@@ -1,5 +1,9 @@
 # Changes History
 
+1.0.4
+-----
+Add 'sometimes' rule modifier 
+
 1.0.3
 -----
 Add ServiceProvider - allows to use rule builder without explicit ->toString()

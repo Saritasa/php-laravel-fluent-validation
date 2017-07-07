@@ -54,6 +54,11 @@ class RuleTest extends TestCase
         $this->assertEquals('size:20', Rule::size(20));
     }
 
+    public function testSometimes()
+    {
+        $this->assertEquals('sometimes', Rule::sometimes());
+    }
+
     /**
      * Rule 'in' can accept values as list of parameters or as array
      */

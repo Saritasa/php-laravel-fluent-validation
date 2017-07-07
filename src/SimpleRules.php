@@ -8,7 +8,7 @@ namespace Saritasa\Laravel\Validation;
 trait SimpleRules
 {
     /**
-     * The field under validation must exist in anotherfield's values.
+     * The field under validation must exist in anotherField's values.
      * @param string $anotherFiled
      * @return static
      */
@@ -116,5 +116,14 @@ trait SimpleRules
     public function size(int $value)
     {
         return $this->appendIfNotExists("size:$value");
+    }
+
+    /**
+     * Run validation checks against a field only if that field is present in the input array.
+     * @return static
+     */
+    public function sometimes()
+    {
+        return $this->appendIfNotExists("sometimes");
     }
 }
