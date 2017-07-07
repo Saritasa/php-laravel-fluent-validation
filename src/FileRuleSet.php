@@ -2,6 +2,9 @@
 
 namespace Saritasa\Laravel\Validation;
 
+/**
+ * Validation rules, applicable only to uploaded files
+ */
 class FileRuleSet extends RuleSet
 {
     const EXPOSED_RULES = ['min', 'max', 'mimetypes', 'mimes'];

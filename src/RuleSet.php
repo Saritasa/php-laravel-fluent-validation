@@ -5,6 +5,8 @@ namespace Saritasa\Laravel\Validation;
 use Saritasa\Exceptions\NotImplementedException;
 
 /**
+ * Rules, available in all rule sets - for all data types
+ *
  * @method GenericRuleSet accepted() The field under validation must be yes, on, 1, or true. This is useful for validating "Terms of Service" acceptance.
  * @method GenericRuleSet array() The field under validation must be a PHP array.
  * @method GenericRuleSet boolean() The field under validation must be able to be cast as a boolean. Accepted input are true,  false, 1, 0, "1", and "0".
@@ -19,10 +21,10 @@ class RuleSet implements IRule
     use RequiredRules, SimpleRules;
 
     const TRIVIAL_RULES = [
-        'accepted',
-        'array',
-        'boolean',
-        'confirmed',
+        'accepted', // TODO move from here
+        'array',    // TODO move from here
+        'boolean',  // TODO move from here
+        'confirmed',// TODO move from here
         'distinct',
         'filled',
         'nullable',

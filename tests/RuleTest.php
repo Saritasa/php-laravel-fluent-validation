@@ -89,4 +89,15 @@ class RuleTest extends TestCase
         $this->assertEquals('required|string', Rule::required()->string()->required()->required()->toString());
         $this->assertEquals('string|required', Rule::string()->required()->required()->required()->toString());
     }
+
+    public function testMixed()
+    {
+        $rules = Rule::string()->required()->min(3);
+        $this->assertEquals('string|required|min:3', $rules);
+
+        $this->assertEquals('string|email|nullable|present',  Rule::email()->nullable()->present());
+
+        $rules = Rule::requiredWithout('facebook_token')->confirmed();
+        $this->assertEquals('required_without:facebook_token|confirmed',  $rules);
+    }
 }

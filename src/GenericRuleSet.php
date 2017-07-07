@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 /**
+ * Validation rules, available before we detected, that field has some specific type (ex. date or string)
+ *
  * @method ImageRuleSet dimensions(array $constraints) Get a dimensions constraint builder instance.
  * @method GenericRuleSet exists(string $table, string $column, \Closure $closure = null) Get a exists constraint builder instance.
  * @method GenericRuleSet unique(string $table, string $column, \Closure $closure = null) Get a unique constraint builder instance.

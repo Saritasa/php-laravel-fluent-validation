@@ -4,6 +4,9 @@ namespace Saritasa\Laravel\Validation;
 
 use Carbon\Carbon;
 
+/**
+ * Validation rules, sensible only for dates
+ */
 class DateRuleSet extends RuleSet
 {
     public function __construct(array $rules = [])
