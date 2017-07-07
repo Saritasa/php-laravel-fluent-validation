@@ -50,6 +50,16 @@ trait SimpleRules
     }
 
     /**
+     * The field under validation must have a different value than field.
+     * @param string $anotherFiled
+     * @return static
+     */
+    public function different(string $anotherFiled)
+    {
+        return $this->appendIfNotExists("different:$anotherFiled");
+    }
+
+    /**
      * The field under validation must have a minimum value. Strings, numerics, arrays, and files are evaluated in the same fashion as the size rule.
      * @param integer $minimalValue For numeric data, value corresponds to a given integer value.
      *                              For an array, size corresponds to the count of the array.

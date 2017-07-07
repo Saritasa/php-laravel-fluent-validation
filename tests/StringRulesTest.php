@@ -29,6 +29,12 @@ class StringRulesTest extends TestCase
         $this->assertEquals('string|timezone', Rule::timezone());
     }
 
+    public function testCombine()
+    {
+        $rules = Rule::same('password')->different('name')->present()->filled();
+        $this->assertEquals('same:password|different:name|present|filled', $rules);
+    }
+
     public function testDoNotRepeat()
     {
         $rules = Rule::string()->email()->email()->regex('@mail.ru$')->regex('@mail.ru$')->email();

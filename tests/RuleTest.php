@@ -4,6 +4,7 @@ namespace Saritasa\Laravel\Validation\Tests;
 
 use Illuminate\Support\Str;
 use PHPUnit\Framework\TestCase;
+use Saritasa\Enums\Gender;
 use Saritasa\Laravel\Validation\Rule;
 use Saritasa\Laravel\Validation\RuleSet;
 
@@ -51,6 +52,32 @@ class RuleTest extends TestCase
     public function testSize()
     {
         $this->assertEquals('size:20', Rule::size(20));
+    }
+
+    /**
+     * Rule 'in' can accept values as list of parameters or as array
+     */
+    public function testIn()
+    {
+        $this->assertEquals('in:male,female', Rule::in('male', 'female'));
+        $this->assertEquals('in:Male,Female', Rule::in(Gender::getConstants()));
+    }
+
+    /**
+     * Rule 'notIn' can accept values as list of parameters or as array
+     */
+    public function testNotIn()
+    {
+        $this->assertEquals('not_in:forbidden,deleted', Rule::notIn('forbidden', 'deleted'));
+        $this->assertEquals('not_in:forbidden,deleted', Rule::notIn(['forbidden', 'deleted']));
+    }
+
+    /**
+     * Note, that argument for inArray rule - another input field name, not list of values (unlike 'in' rule)
+     */
+    public function testInArray()
+    {
+        $this->assertEquals('in_array:favorite_topics', Rule::inArray('favorite_topics'));
     }
 
     /**

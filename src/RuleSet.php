@@ -32,6 +32,7 @@ class RuleSet implements IRule
     const BASIC_RULES = [
         'in',
         'notIn',
+        'inArray',
 
         'required',
         'requiredIf',

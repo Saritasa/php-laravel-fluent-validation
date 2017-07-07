@@ -18,6 +18,7 @@ use Saritasa\Exceptions\NotImplementedException;
  * @method static GenericRuleSet notIn(... $values) The field under validation must not be included in the given list of values.
  * @method static GenericRuleSet nullable() The field under validation may be null. This is particularly useful when validating primitive such as strings and integers that can contain null values.
  * @method static GenericRuleSet present() The field under validation must be present in the input data but can be empty.
+ * @method static GenericRuleSet different(string $anotherFiled) The field under validation must have a different value than field.
  * @method static GenericRuleSet same(string $anotherFiled) The given field must match the field under validation.
  * @method static GenericRuleSet size(int $value) The field under validation must have a size matching the given value. For string data, value corresponds to the number of characters. For numeric data, value corresponds to a given integer value. For an array, size corresponds to the count of the array. For files, size corresponds to the file size in kilobytes.
  * @method static GenericRuleSet min($minValue) The field under validation must have a minimum value. Strings, numerics, arrays, and files are evaluated in the same fashion as the size rule.
