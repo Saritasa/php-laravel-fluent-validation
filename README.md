@@ -18,7 +18,7 @@ $rules = [
 ### Examples
 Inline documentation: ![Inline documentation](docs/inline_docs.png)
 
-Inellisence: ![Intelisence](docs/intellisense.png)
+Inellisence: ![Intelisence](docs/intellisence.png)
 
 ## Installation
 
