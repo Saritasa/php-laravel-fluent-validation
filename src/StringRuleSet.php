@@ -8,6 +8,9 @@ use Illuminate\Support\Str;
  * Rules, that are reasonable for strings only
  *
  * @method StringRuleSet activeUrl() The field under validation must have a valid A or AAAA record according to the dns_get_record PHP function.
+ * @method StringRuleSet alpha() The field under validation must be entirely alphabetic characters.
+ * @method StringRuleSet alphaDash() The field under validation may have alpha-numeric characters, as well as dashes and underscores.
+ * @method StringRuleSet alphaNum() The field under validation must be entirely alpha-numeric characters.
  * @method StringRuleSet email() The field under validation must be formatted as an e-mail address.
  * @method StringRuleSet ip() The field under validation must be an IP address.
  * @method StringRuleSet ipv4() The field under validation must be an IPv4 address.
@@ -22,6 +25,9 @@ class StringRuleSet extends RuleSet
 
     const TRIVIAL_STRING_RULES = [
         'activeUrl',
+        'alpha',
+        'alphaDash',
+        'alphaNum',
         'email',
         'ip',
         'ipv4',

@@ -11,8 +11,9 @@ use Saritasa\Exceptions\NotImplementedException;
  * @method static ImageRuleSet dimensions(array $constraints) Get a dimensions constraint builder instance.
  * @method static GenericRuleSet accepted() The field under validation must be yes, on, 1, or true. This is useful for validating "Terms of Service" acceptance.
  * @method static GenericRuleSet boolean() The field under validation must be able to be cast as a boolean. Accepted input are true,  false, 1, 0, "1", and "0".
- * @method static GenericRuleSet exists(string $table, string $column, \Closure $closure = null) Get a exists constraint builder instance.
- * @method static GenericRuleSet unique(string $table, string $column, \Closure $closure = null) Get a unique constraint builder instance.
+ * @method static GenericRuleSet confirmed() The field under validation must have a matching field of foo_confirmation. For example, if the field under validation is password, a matching password_confirmation field must be present in the input.
+ * @method static GenericRuleSet distinct() When working with arrays, the field under validation must not have any duplicate values.
+ * @method static GenericRuleSet filled() The field under validation must not be empty when it is present.
  * @method static GenericRuleSet in(... $values) The field under validation must be included in the given list of values.
  * @method static GenericRuleSet notIn(... $values) The field under validation must not be included in the given list of values.
  * @method static GenericRuleSet nullable() The field under validation may be null. This is particularly useful when validating primitive such as strings and integers that can contain null values.
@@ -30,6 +31,9 @@ use Saritasa\Exceptions\NotImplementedException;
  * @method static GenericRuleSet requiredUnless(string $anotherField, $value) The field under validation must be present and not empty unless the $anotherField field is equal to any value.
 
  * @method static StringRuleSet activeUrl() The field under validation must have a valid A or AAAA record according to the dns_get_record PHP function.
+ * @method static StringRuleSet alpha() The field under validation must be entirely alphabetic characters.
+ * @method static StringRuleSet alphaDash() The field under validation may have alpha-numeric characters, as well as dashes and underscores.
+ * @method static StringRuleSet alphaNum() The field under validation must be entirely alpha-numeric characters.
  * @method static StringRuleSet email() The field under validation must be formatted as an e-mail address.
  * @method static StringRuleSet ip() The field under validation must be an IP address.
  * @method static StringRuleSet ipv4() The field under validation must be an IPv4 address.
@@ -49,6 +53,10 @@ use Saritasa\Exceptions\NotImplementedException;
  *
  * @method static NumericRuleSet digits($length) The field under validation must be numeric and must have an exact length of value.
  * @method static NumericRuleSet digitsBetween($minLength, $maxLength) The field under validation must have a length between the given min and max.
+
+ * @method static DatabaseRuleSet exists(string $table, string $column, \Closure $closure = null) Get a exists constraint builder instance.
+ * @method static DatabaseRuleSet unique(string $table, string $column, \Closure $closure = null) Get a unique constraint builder instance.
+
  */
 class Rule
 {

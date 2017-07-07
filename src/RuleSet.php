@@ -5,8 +5,14 @@ namespace Saritasa\Laravel\Validation;
 use Saritasa\Exceptions\NotImplementedException;
 
 /**
- * @method GenericRuleSet accepted()
- *
+ * @method GenericRuleSet accepted() The field under validation must be yes, on, 1, or true. This is useful for validating "Terms of Service" acceptance.
+ * @method GenericRuleSet array() The field under validation must be a PHP array.
+ * @method GenericRuleSet boolean() The field under validation must be able to be cast as a boolean. Accepted input are true,  false, 1, 0, "1", and "0".
+ * @method GenericRuleSet confirmed() The field under validation must have a matching field of foo_confirmation. For example, if the field under validation is password, a matching password_confirmation field must be present in the input.
+ * @method GenericRuleSet distinct() When working with arrays, the field under validation must not have any duplicate values.
+ * @method GenericRuleSet filled() The field under validation must not be empty when it is present.
+ * @method GenericRuleSet nullable() The field under validation may be null. This is particularly useful when validating primitive such as strings and integers that can contain null values.
+ * @method GenericRuleSet present() The field under validation must be present in the input data but can be empty.
  */
 class RuleSet implements IRule
 {
@@ -14,13 +20,9 @@ class RuleSet implements IRule
 
     const TRIVIAL_RULES = [
         'accepted',
-        'alpha',
-        'alphaDash',
-        'alphaNum',
         'array',
         'boolean',
         'confirmed',
-        'date',
         'distinct',
         'filled',
         'nullable',
@@ -30,10 +32,6 @@ class RuleSet implements IRule
     const BASIC_RULES = [
         'in',
         'notIn',
-        'nullable',
-        'accepted',
-        'confirmed',
-        'present',
 
         'required',
         'requiredIf',
