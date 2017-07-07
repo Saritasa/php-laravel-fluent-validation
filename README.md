@@ -47,7 +47,7 @@ is not necessary.
 
 ## Available classes
 
-### Rules
+### \Saritasa\Laravel\Validation\Rule
 Root of your rule builder.
 
 ## Contributing
