@@ -1,6 +1,6 @@
 # Fluent Validation Rules builders for Laravel
 
-Use fluent-style syntax to build Laravel validation rules
+Use fluent-style syntax to build [Laravel validation rules](https://laravel.com/docs/5.4/validation#available-validation-rules)
 
 **Example**:
 ```php
