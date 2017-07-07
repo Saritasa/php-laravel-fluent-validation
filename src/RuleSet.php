@@ -49,6 +49,7 @@ class RuleSet implements IRule
         'max',
         'between',
         'size',
+        'sometimes',
     ];
 
     /** @var array */

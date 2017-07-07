@@ -32,7 +32,7 @@ class DatabaseRuleSet extends GenericRuleSet
      * @return GenericRuleSet
      * @see \Illuminate\Validation\Rules\Exists
      */
-    public function exists($table, $column = 'NULL', \Closure $callback = null): GenericRuleSet
+    public function exists(string $table, string $column = 'NULL', \Closure $callback = null): GenericRuleSet
     {
         $rule = \Illuminate\Validation\Rule::exists($table, $column);
         if ($callback !== null) {
