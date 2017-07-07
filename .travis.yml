@@ -10,7 +10,6 @@ php:
   - 7.1
 
 before_install:
-  - composer self-update
   - composer global require hirak/prestissimo --update-no-dev
 
 install: composer update --no-interaction --prefer-dist
