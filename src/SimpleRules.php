@@ -8,7 +8,7 @@ namespace Saritasa\Laravel\Validation;
 trait SimpleRules
 {
     /**
-     * The field under validation must exist in anotherfield's values.
+     * The field under validation must exist in anotherField's values.
      * @param string $anotherFiled
      * @return static
      */
