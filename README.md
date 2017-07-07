@@ -1,4 +1,8 @@
-# Fluent Validation Rules builders for Laravel [![Build Status](https://travis-ci.org/Saritasa/php-laravel-fluent-validation.svg?branch=master)](https://travis-ci.org/Saritasa/php-laravel-fluent-validation)
+# Fluent Validation Rules builders for Laravel 
+
+[![Build Status](https://travis-ci.org/Saritasa/php-laravel-fluent-validation.svg?branch=master)](https://travis-ci.org/Saritasa/php-laravel-fluent-validation)
+[![Latest Stable Version](https://poser.pugx.org/saritasa/laravel-fluent-validation/v/stable)](https://packagist.org/packages/saritasa/laravel-fluent-validation)
+[![License](https://poser.pugx.org/saritasa/laravel-fluent-validation/license)](https://packagist.org/packages/saritasa/laravel-fluent-validation)
 
 Use fluent-style syntax to build [Laravel validation rules](https://laravel.com/docs/5.4/validation#available-validation-rules)
 
