@@ -46,7 +46,7 @@ class DatabaseRuleSet extends GenericRuleSet
      *
      * @param  string $table
      * @param  string $column
-     * @param \Closure|null $callback callback, that will receive \Illuminate\Validation\Rules\Exists $rule
+     * @param \Closure|null $callback callback, that will receive \Illuminate\Validation\Rules\Unique $rule
      * @return GenericRuleSet
      */
     public function unique(string $table, string $column = 'NULL', \Closure $callback = null): GenericRuleSet
