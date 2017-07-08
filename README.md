@@ -28,6 +28,17 @@ $rules = [
 
 ![Intelisence](docs/intellisence.png)
 
+**Custom validation rules**
+
+You can also use [custom declared validations](https://laravel.com/docs/5.4/validation#custom-validation-rules):
+
+```php
+$rules = [
+    ... => Rule::custom('foo')
+]
+```
+
+
 ## Installation
 
 Install the ```saritasa/laravel-fluent-validation``` package:
