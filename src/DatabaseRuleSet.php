@@ -16,7 +16,7 @@ class DatabaseRuleSet extends GenericRuleSet
     {
         if (!Config::get('validation.allow_db', false)) {
             throw new ConfigurationException("Validation against database is disabled. "
-                ."To to use validation rules, like 'exists', 'unique', etc. set configuration parameter "
+                ."To use validation rules, like 'exists', 'unique', etc. set configuration parameter "
                 ."'validation.allow_db' = true");
         }
 
