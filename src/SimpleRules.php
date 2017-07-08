@@ -2,6 +2,9 @@
 
 namespace Saritasa\Laravel\Validation;
 
+use Illuminate\Support\Facades\Config;
+use Saritasa\Exceptions\ConfigurationException;
+
 /**
  * Just breakdown of RuleSet, containing too many methods for easy reading
  */
@@ -125,5 +128,24 @@ trait SimpleRules
     public function sometimes()
     {
         return $this->appendIfNotExists("sometimes");
+    }
+
+    /**
+     * The field under validation must pass custom validation rule.
+     * @param string $customRule
+     * @return GenericRuleSet
+     * @throws ConfigurationException
+     * @see https://laravel.com/docs/5.4/validation#custom-validation-rules
+     * @see \Illuminate\Validation\Factory::extend
+     */
+    public function custom(string $customRule): GenericRuleSet
+    {
+        if (!Config::get('validation.allow_custom', false)) {
+            throw new ConfigurationException("Custom validation rules are disabled. "
+                . "To use custom validation rules, registered via Validator::extend, set configuration parameter "
+                . "'validation.allow_custom' = true");
+        }
+
+        return $this->appendIfNotExists($customRule);
     }
 }

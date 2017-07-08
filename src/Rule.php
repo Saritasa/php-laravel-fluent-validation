@@ -31,6 +31,7 @@ use Saritasa\Exceptions\NotImplementedException;
  * @method static GenericRuleSet requiredWithoutAll(string ...$otherFields) The field under validation must be present and not empty only when all of the other specified fields are not present.
  * @method static GenericRuleSet requiredIf(string $anotherField, $value) The field under validation must be present and not empty if the $anotherField field is equal to any value.
  * @method static GenericRuleSet requiredUnless(string $anotherField, $value) The field under validation must be present and not empty unless the $anotherField field is equal to any value.
+ * @method static GenericRuleSet custom(string $customRule) The field under validation must pass custom validation rule.
 
  * @method static StringRuleSet activeUrl() The field under validation must have a valid A or AAAA record according to the dns_get_record PHP function.
  * @method static StringRuleSet alpha() The field under validation must be entirely alphabetic characters.

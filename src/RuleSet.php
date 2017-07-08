@@ -50,6 +50,7 @@ class RuleSet implements IRule
         'between',
         'size',
         'sometimes',
+        'custom',
     ];
 
     /** @var array */
