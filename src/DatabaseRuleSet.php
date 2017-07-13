@@ -16,7 +16,7 @@ class DatabaseRuleSet extends GenericRuleSet
     {
         if (!Config::get('validation.allow_db', false)) {
             throw new ConfigurationException("Validation against database is disabled. "
-                ."To to use validation rules, like 'exists', 'unique', etc. set configuration parameter "
+                ."To use validation rules, like 'exists', 'unique', etc. set configuration parameter "
                 ."'validation.allow_db' = true");
         }
 
@@ -46,7 +46,7 @@ class DatabaseRuleSet extends GenericRuleSet
      *
      * @param  string $table
      * @param  string $column
-     * @param \Closure|null $callback callback, that will receive \Illuminate\Validation\Rules\Exists $rule
+     * @param \Closure|null $callback callback, that will receive \Illuminate\Validation\Rules\Unique $rule
      * @return GenericRuleSet
      */
     public function unique(string $table, string $column = 'NULL', \Closure $callback = null): GenericRuleSet

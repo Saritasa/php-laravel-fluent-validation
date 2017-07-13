@@ -1,5 +1,9 @@
 # Changes History
 
+1.0.5
+-----
+Add ability to use custom declared validation rules 
+
 1.0.4
 -----
 Add 'sometimes' rule modifier 

@@ -21,6 +21,7 @@ use Saritasa\Exceptions\NotImplementedException;
  * @method static GenericRuleSet different(string $anotherFiled) The field under validation must have a different value than field.
  * @method static GenericRuleSet same(string $anotherFiled) The given field must match the field under validation.
  * @method static GenericRuleSet size(int $value) The field under validation must have a size matching the given value. For string data, value corresponds to the number of characters. For numeric data, value corresponds to a given integer value. For an array, size corresponds to the count of the array. For files, size corresponds to the file size in kilobytes.
+ * @method static GenericRuleSet between($minimalValue, $maximalValue) The field under validation must have a size between the given min and max. Strings, numerics, arrays, and files are evaluated in the same fashion as the size rule.
  * @method static GenericRuleSet min($minValue) The field under validation must have a minimum value. Strings, numerics, arrays, and files are evaluated in the same fashion as the size rule.
  * @method static GenericRuleSet max($maxValue) The field under validation must be less than or equal to a maximum value. Strings, numerics, arrays, and files are evaluated in the same fashion as the size rule.
  * @method static GenericRuleSet inArray(string $anotherField) The field under validation must exist in $anotherField's values.
@@ -31,6 +32,7 @@ use Saritasa\Exceptions\NotImplementedException;
  * @method static GenericRuleSet requiredWithoutAll(string ...$otherFields) The field under validation must be present and not empty only when all of the other specified fields are not present.
  * @method static GenericRuleSet requiredIf(string $anotherField, $value) The field under validation must be present and not empty if the $anotherField field is equal to any value.
  * @method static GenericRuleSet requiredUnless(string $anotherField, $value) The field under validation must be present and not empty unless the $anotherField field is equal to any value.
+ * @method static GenericRuleSet custom(string $customRule) The field under validation must pass custom validation rule.
 
  * @method static StringRuleSet activeUrl() The field under validation must have a valid A or AAAA record according to the dns_get_record PHP function.
  * @method static StringRuleSet alpha() The field under validation must be entirely alphabetic characters.
