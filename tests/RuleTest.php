@@ -64,8 +64,8 @@ class RuleTest extends TestCase
      */
     public function testIn()
     {
-        $this->assertEquals('in:male,female', Rule::in('male', 'female'));
-        $this->assertEquals('in:Male,Female', Rule::in(Gender::getConstants()));
+        $this->assertEquals('in:"male","female"', Rule::in('male', 'female'));
+        $this->assertEquals('in:"Male","Female"', Rule::in(Gender::getConstants()));
     }
 
     /**
@@ -73,8 +73,8 @@ class RuleTest extends TestCase
      */
     public function testNotIn()
     {
-        $this->assertEquals('not_in:forbidden,deleted', Rule::notIn('forbidden', 'deleted'));
-        $this->assertEquals('not_in:forbidden,deleted', Rule::notIn(['forbidden', 'deleted']));
+        $this->assertEquals('not_in:"forbidden","deleted"', Rule::notIn('forbidden', 'deleted'));
+        $this->assertEquals('not_in:"forbidden","deleted"', Rule::notIn(['forbidden', 'deleted']));
     }
 
     /**

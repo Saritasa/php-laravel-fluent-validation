@@ -1,5 +1,9 @@
 # Changes History
 
+1.0.6
+-----
+Add rules for validation phone number.
+
 1.0.5
 -----
 Add ability to use custom declared validation rules 
