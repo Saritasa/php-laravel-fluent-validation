@@ -21,7 +21,7 @@ use Illuminate\Support\Str;
  */
 class StringRuleSet extends RuleSet
 {
-    const EXPOSED_RULES = ['email', 'regex', 'timezone'];
+    const EXPOSED_RULES = ['email', 'regex', 'timezone', 'phoneRegex'];
 
     const TRIVIAL_STRING_RULES = [
         'activeUrl',
