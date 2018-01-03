@@ -1,12 +1,16 @@
 # Changes History
 
+1.0.6
+-----
+Resolve "Presence verifier has not been set." issue for **exists** and **in** rules
+
 1.0.5
 -----
-Add ability to use custom declared validation rules 
+Add ability to use custom declared validation rules
 
 1.0.4
 -----
-Add 'sometimes' rule modifier 
+Add 'sometimes' rule modifier
 
 1.0.3
 -----
