@@ -24,6 +24,12 @@ class StringRulesTest extends TestCase
         $this->assertEquals('string|regex:/^\w+[\w-\.]*\w+$/', $rules);
     }
 
+    public function testPhoneRegex()
+    {
+        $rules = Rule::string()->phoneRegex();
+        $this->assertEquals('string|regex:/^\+(?:[0-9]?){6,14}[0-9]$/', $rules);
+    }
+
     public function testTimezone()
     {
         $this->assertEquals('string|timezone', Rule::timezone());

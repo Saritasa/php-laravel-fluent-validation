@@ -4,6 +4,7 @@ namespace Saritasa\Laravel\Validation;
 
 use Illuminate\Validation\ValidationServiceProvider;
 use Illuminate\Contracts\Validation\Factory as IValidatorFactory;
+use Propaganistas\LaravelPhone\PhoneServiceProvider;
 
 /**
  * Service provider substitutes default Laravel's validation factory
@@ -25,5 +26,15 @@ class FluentValidationServiceProvider extends ValidationServiceProvider
 
             return $validator;
         });
+    }
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->app->register(PhoneServiceProvider::class);
     }
 }

@@ -1,5 +1,9 @@
 # Changes History
 
+1.0.7
+-----
+Add rules for validation phone number.
+
 1.0.6
 -----
 Resolve "Presence verifier has not been set." issue for **exists** and **in** rules
