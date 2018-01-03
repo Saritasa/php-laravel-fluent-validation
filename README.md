@@ -57,7 +57,8 @@ Add the FluentValidationServiceProvider in ``config/app.php``:
 *Note:* You can omit service provider registration, but then you must call
 *->toString()* or *->toArray()* on each builder.
 If service provider is registered, manual casting of rule to string or array
-is not necessary.
+is not necessary and default Laravel's *Illuminate\Validation\ValidationServiceProvider::class* 
+can be removed from *'providers'* array.
 
 
 ## Available classes

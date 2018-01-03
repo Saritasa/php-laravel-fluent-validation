@@ -90,8 +90,7 @@ class RuleSet implements IRule
     {
         if (in_array($rule, $this->rules)) {
             return $this;
-        }
-        else {
+        } else {
             return new static(array_merge($this->rules, [$rule]));
         }
     }
@@ -108,8 +107,7 @@ class RuleSet implements IRule
     {
         if (in_array($rule, $rules)) {
             return $rules;
-        }
-        else {
+        } else {
             return array_merge($rules, [$rule]);
         }
     }
@@ -117,7 +115,7 @@ class RuleSet implements IRule
     /** Return current rule set as array */
     public function toArray(): array
     {
-        return array_map(function($rule) {
+        return array_map(function ($rule) {
             if ($rule instanceof IRule) {
                 return (string)$rule;
             } else {
