@@ -1,8 +1,12 @@
 # Changes History
 
+1.0.8
+-----
+Add missed parent service provider **register()** call
+
 1.0.7
 -----
-Add rules for validation phone number.
+Add rules for validation phone number
 
 1.0.6
 -----

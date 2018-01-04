@@ -3,7 +3,6 @@
 namespace Saritasa\Laravel\Validation;
 
 use Illuminate\Validation\ValidationServiceProvider;
-use Illuminate\Contracts\Validation\Factory as IValidatorFactory;
 use Propaganistas\LaravelPhone\PhoneServiceProvider;
 
 /**
@@ -35,6 +34,7 @@ class FluentValidationServiceProvider extends ValidationServiceProvider
      */
     public function register()
     {
+        parent::register();
         $this->app->register(PhoneServiceProvider::class);
     }
 }
