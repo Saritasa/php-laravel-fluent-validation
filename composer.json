@@ -23,7 +23,6 @@
         "phpunit/phpunit": "^6.0",
         "squizlabs/php_codesniffer": "^3.0"
     },
-    "minimum-stability": "stable",
     "autoload": {
         "psr-4" : {
             "Saritasa\\Laravel\\Validation\\": "src/"
