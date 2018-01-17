@@ -54,7 +54,7 @@ class DatabaseRuleSet extends GenericRuleSet
         if ($callback !== null) {
             $rule = \Illuminate\Validation\Rule::unique($table, $column);
             $callback($rule);
-        } else  {
+        } else {
             $rule = "unique:$table,$column";
         }
         return $this->appendIfNotExists((string)$rule);

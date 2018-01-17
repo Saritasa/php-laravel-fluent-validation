@@ -57,7 +57,8 @@ class ImageRuleSet extends FileRuleSet
      * @param array|\Closure|Dimensions $constraints
      * @return $this
      */
-    public function dimensions($constraints) {
+    public function dimensions($constraints)
+    {
         if ($constraints instanceof Dimensions) {
             $this->dimensions = $constraints;
         } elseif (is_array($constraints) && !empty($constraints)) {

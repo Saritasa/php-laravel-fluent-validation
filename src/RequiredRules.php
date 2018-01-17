@@ -83,5 +83,4 @@ trait RequiredRules
     {
         return $this->appendIfNotExists("required_unless:$anotherField,$value");
     }
-
 }

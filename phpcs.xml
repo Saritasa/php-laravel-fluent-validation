@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <ruleset name="PHP_CodeSniffer">
-    <description>The coding standard for laravel package</description>
+    <description>The for Saritasa package</description>
 
-    <file>app</file>
+    <file>src</file>
 
     <exclude-pattern>*.json</exclude-pattern>
     <exclude-pattern>*.xml</exclude-pattern>
@@ -11,7 +11,4 @@
     <arg value="p"/>
 
     <rule ref="PSR2"/>
-    <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
-        <exclude-pattern>*/database/*</exclude-pattern>
-    </rule>
 </ruleset>
