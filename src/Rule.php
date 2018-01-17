@@ -10,6 +10,7 @@ use Saritasa\Exceptions\NotImplementedException;
  *
  * @method static ImageRuleSet dimensions(array $constraints) Get a dimensions constraint builder instance.
  * @method static GenericRuleSet accepted() The field under validation must be yes, on, 1, or true. This is useful for validating "Terms of Service" acceptance.
+ * @method static GenericRuleSet array() The field under validation must be a PHP array.
  * @method static GenericRuleSet boolean() The field under validation must be able to be cast as a boolean. Accepted input are true,  false, 1, 0, "1", and "0".
  * @method static GenericRuleSet confirmed() The field under validation must have a matching field of foo_confirmation. For example, if the field under validation is password, a matching password_confirmation field must be present in the input.
  * @method static GenericRuleSet distinct() When working with arrays, the field under validation must not have any duplicate values.
@@ -46,6 +47,7 @@ use Saritasa\Exceptions\NotImplementedException;
  * @method static StringRuleSet timezone() The field under validation must be a valid timezone identifier according to the timezone_identifiers_list PHP function
  * @method static StringRuleSet url() The field under validation must be a valid URL.
  * @method static StringRuleSet regex(string $pattern, bool $ignoreCase = false) The field under validation must match the given regular expression.
+ * @method static StringRuleSet phoneRegex() Shortcut method for validating phone with use regex.
 
  * @method static FileRuleSet mimetypes(string ...$types) The file under validation must match one of the given MIME types. To determine the MIME type of the uploaded file, the file's contents will be read and the framework will attempt to guess the MIME type, which may be different from the client provided MIME type.
  * @method static FileRuleSet mimes(string ...$extensions) The file under validation must have a MIME type corresponding to one of the listed extensions.
@@ -65,12 +67,11 @@ use Saritasa\Exceptions\NotImplementedException;
 class Rule
 {
     /**
-    The field under validation must be present in the input data and not empty. A field is considered "empty" if one of the following conditions are true:
-
-    The value is null.
-    The value is an empty string.
-    The value is an empty array or empty Countable object.
-    The value is an uploaded file with no path.
+     * The field under validation must be present in the input data and not empty. A field is considered "empty" if one of the following conditions are true:
+     * The value is null.
+     * The value is an empty string.
+     * The value is an empty array or empty Countable object.
+     * The value is an uploaded file with no path.
      */
     public static function required(): GenericRuleSet
     {
@@ -130,6 +131,22 @@ class Rule
     public static function image($constraints = []): ImageRuleSet
     {
         return new ImageRuleSet([], $constraints);
+    }
+
+    /**
+     * The field under validation must be a phone.
+     *
+     * If difficult validation is not required, it is recommended use
+     * {@see \Saritasa\Laravel\Validation\StringRuleSet::phoneRegex} phoneRegex() method.
+     *
+     * @see https://github.com/Propaganistas/Laravel-Phone Documentation of Laravel Phone library.
+     * @see \Propaganistas\LaravelPhone\Rules\Phone Rule of phone validation.
+     *
+     * @return PhoneRuleSet
+     */
+    static function phone()
+    {
+        return new PhoneRuleSet();
     }
 
     public static function __callStatic($name, $arguments)

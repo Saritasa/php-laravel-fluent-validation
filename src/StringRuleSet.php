@@ -21,7 +21,7 @@ use Illuminate\Support\Str;
  */
 class StringRuleSet extends RuleSet
 {
-    const EXPOSED_RULES = ['email', 'regex', 'timezone'];
+    const EXPOSED_RULES = ['email', 'regex', 'timezone', 'phoneRegex'];
 
     const TRIVIAL_STRING_RULES = [
         'activeUrl',
@@ -57,6 +57,21 @@ class StringRuleSet extends RuleSet
             $pattern .= 'i';
         }
         return $this->appendIfNotExists("regex:$pattern");
+    }
+
+    /**
+     * Shortcut method for validating phone with use regex.
+     * The method uses E.164 format for validation. (ex: +12345678901)
+     *
+     * For more difficult validation needs use \Saritasa\Laravel\Validation\Rule::phone()
+     *
+     * @see \Saritasa\Laravel\Validation\Rule::phone()
+     *
+     * @return StringRuleSet
+     */
+    public function phoneRegex()
+    {
+        return $this->regex('/^\+(?:[0-9]?){6,14}[0-9]$/');
     }
 
     public function __call($name, $arguments)
