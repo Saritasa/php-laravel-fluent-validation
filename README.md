@@ -46,7 +46,10 @@ Install the ```saritasa/laravel-fluent-validation``` package:
 ```bash
 $ composer require saritasa/laravel-fluent-validation
 ```
-Add the FluentValidationServiceProvider in ``config/app.php``:
+
+If you use Laraval 5.4 or less,
+or 5.5 with [package discovery](https://laravel.com/docs/5.5/packages#package-discovery) disabled,
+add the FluentValidationServiceProvider in ``config/app.php``:
 
 ```php
 'providers' => array(
