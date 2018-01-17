@@ -41,7 +41,7 @@ class ImageRuleSet extends FileRuleSet
         return $this->appendIfNotExists('file');
     }
 
-    function __call($name, $arguments)
+    public function __call($name, $arguments)
     {
         if (in_array($name, ['width', 'height', 'minWidth', 'minHeight', 'maxWidth', 'maxHeight', 'ratio'])) {
             if ($this->dimensions == null) {

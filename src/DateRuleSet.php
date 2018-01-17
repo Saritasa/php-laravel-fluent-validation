@@ -37,7 +37,7 @@ class DateRuleSet extends RuleSet
      * @param Carbon|string $date
      * @return $this|static
      */
-    function after($date)
+    public function after($date)
     {
         return $this->appendIfNotExists("after:$date");
     }
@@ -50,7 +50,7 @@ class DateRuleSet extends RuleSet
      * @param Carbon|string $date
      * @return $this|static
      */
-    function afterOrEqual($date)
+    public function afterOrEqual($date)
     {
         return $this->appendIfNotExists("after_or_equal:$date");
     }
@@ -62,7 +62,7 @@ class DateRuleSet extends RuleSet
      * @param Carbon|string $date
      * @return $this|static
      */
-    function before($date)
+    public function before($date)
     {
         return $this->appendIfNotExists("before:$date");
     }
@@ -74,7 +74,7 @@ class DateRuleSet extends RuleSet
      * @param Carbon|string $date
      * @return $this|static
      */
-    function beforeOrEqual($date)
+    public function beforeOrEqual($date)
     {
         return $this->appendIfNotExists("before_or_equal:$date");
     }

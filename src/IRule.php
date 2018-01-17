@@ -9,5 +9,5 @@ namespace Saritasa\Laravel\Validation;
 interface IRule
 {
     /** Magic method, called on explicit or implicit casting to string */
-    function __toString(): string;
+    public function __toString(): string;
 }

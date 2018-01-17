@@ -70,7 +70,7 @@ class RuleSet implements IRule
      * @return static
      * @throws NotImplementedException if requested method is unknown
      */
-    function __call($name, $arguments)
+    public function __call($name, $arguments)
     {
         if (in_array($name, static::TRIVIAL_RULES)) {
             return $this->appendIfNotExists($name);
@@ -131,7 +131,7 @@ class RuleSet implements IRule
     }
 
     /** Create string representation for current set of rules */
-    function __toString(): string
+    public function __toString(): string
     {
         return $this->toString();
     }

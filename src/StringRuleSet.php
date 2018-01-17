@@ -59,7 +59,7 @@ class StringRuleSet extends RuleSet
         return $this->appendIfNotExists("regex:$pattern");
     }
 
-    function __call($name, $arguments)
+    public function __call($name, $arguments)
     {
         if (in_array($name, static::TRIVIAL_STRING_RULES)) {
             return $this->appendIfNotExists(Str::snake($name));

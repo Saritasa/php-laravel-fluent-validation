@@ -72,7 +72,7 @@ class Rule
     The value is an empty array or empty Countable object.
     The value is an uploaded file with no path.
      */
-    static function required(): GenericRuleSet
+    public static function required(): GenericRuleSet
     {
         return (new GenericRuleSet())->required();
     }
@@ -81,7 +81,7 @@ class Rule
      * The field under validation must be an integer.
      * @return IntRuleSet
      */
-    static function int(): IntRuleSet
+    public static function int(): IntRuleSet
     {
         return new IntRuleSet();
     }
@@ -90,7 +90,7 @@ class Rule
      * The field under validation must be numeric.
      * @return NumericRuleSet
      */
-    static function numeric(): NumericRuleSet
+    public static function numeric(): NumericRuleSet
     {
         return new NumericRuleSet();
     }
@@ -99,7 +99,7 @@ class Rule
      * The field under validation must be a string. If you would like to allow the field to also be null, you should assign the nullable rule to the field.
      * @return StringRuleSet
      */
-    static function string(): StringRuleSet
+    public static function string(): StringRuleSet
     {
         return new StringRuleSet();
     }
@@ -108,7 +108,7 @@ class Rule
      * The field under validation must be a successfully uploaded file.
      * @return FileRuleSet
      */
-    static function file(): FileRuleSet
+    public static function file(): FileRuleSet
     {
         return new FileRuleSet();
     }
@@ -117,7 +117,7 @@ class Rule
      * The field under validation must be a valid date according to the strtotime PHP function.
      * @return DateRuleSet
      */
-    static function date(): DateRuleSet
+    public static function date(): DateRuleSet
     {
         return new DateRuleSet();
     }
@@ -127,7 +127,7 @@ class Rule
      * @param array|\Closure|\Illuminate\Validation\Rules\Dimensions $constraints
      * @return ImageRuleSet
      */
-    static function image($constraints = []): ImageRuleSet
+    public static function image($constraints = []): ImageRuleSet
     {
         return new ImageRuleSet([], $constraints);
     }

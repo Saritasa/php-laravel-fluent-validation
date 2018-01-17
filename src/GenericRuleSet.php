@@ -39,7 +39,7 @@ class GenericRuleSet extends RuleSet
      * The field under validation must be an integer.
      * @return IntRuleSet
      */
-    function int(): IntRuleSet
+    public function int(): IntRuleSet
     {
         return new IntRuleSet($this->rules);
     }
@@ -48,7 +48,7 @@ class GenericRuleSet extends RuleSet
      * The field under validation must be numeric.
      * @return NumericRuleSet
      */
-    function numeric(): NumericRuleSet
+    public function numeric(): NumericRuleSet
     {
         return new NumericRuleSet($this->rules);
     }
@@ -57,7 +57,7 @@ class GenericRuleSet extends RuleSet
      * The field under validation must be a string. If you would like to allow the field to also be null, you should assign the nullable rule to the field.
      * @return StringRuleSet
      */
-    function string(): StringRuleSet
+    public function string(): StringRuleSet
     {
         return new StringRuleSet($this->rules);
     }
@@ -66,7 +66,7 @@ class GenericRuleSet extends RuleSet
      * The field under validation must be able to be cast as a boolean. Accepted input are true,  false, 1, 0, "1", and "0".
      * @return GenericRuleSet
      */
-    function boolean(): GenericRuleSet
+    public function boolean(): GenericRuleSet
     {
         return $this->appendIfNotExists('boolean');
     }
@@ -75,7 +75,7 @@ class GenericRuleSet extends RuleSet
      * The field under validation must be a valid date according to the strtotime PHP function.
      * @return DateRuleSet
      */
-    function date(): DateRuleSet
+    public function date(): DateRuleSet
     {
         return new DateRuleSet($this->rules);
     }
@@ -84,12 +84,12 @@ class GenericRuleSet extends RuleSet
      * The field under validation must be a successfully uploaded file.
      * @return FileRuleSet
      */
-    function file(): FileRuleSet
+    public function file(): FileRuleSet
     {
         return new FileRuleSet($this->rules);
     }
 
-    function __call($name, $arguments)
+    public function __call($name, $arguments)
     {
         $ruleSet = null;
         if (in_array($name, StringRuleSet::EXPOSED_RULES)) {
