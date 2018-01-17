@@ -49,7 +49,7 @@ class PhoneRuleSet extends StringRuleSet
         }
     }
 
-    function __call($name, $arguments)
+    public function __call($name, $arguments)
     {
         if (method_exists($this->rule, $name)) {
             call_user_func_array([$this->rule, $name], $arguments);

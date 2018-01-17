@@ -144,7 +144,7 @@ class Rule
      *
      * @return PhoneRuleSet
      */
-    static function phone()
+    public static function phone()
     {
         return new PhoneRuleSet();
     }
