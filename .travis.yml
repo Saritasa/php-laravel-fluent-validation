@@ -14,5 +14,6 @@ before_install:
 
 install: composer update --no-interaction --prefer-dist
 
-script: vendor/bin/phpunit
-script: vendor/bin/phpcs
+script:
+  - vendor/bin/phpunit
+  - vendor/bin/phpcs
