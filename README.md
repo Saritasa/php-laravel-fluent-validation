@@ -1,6 +1,6 @@
 # Fluent Validation Rules builders for Laravel
 
-[![Build Status](https://api.travis-ci.org/Saritasa/php-laravel-fluent-validation.svg?branch=master)](https://travis-ci.org/Saritasa/php-laravel-fluent-validation)
+[![Build Status](https://travis-ci.org/Saritasa/php-laravel-fluent-validation.svg?branch=master)](https://travis-ci.org/Saritasa/php-laravel-fluent-validation)
 [![codecov](https://codecov.io/gh/Saritasa/php-laravel-fluent-validation/branch/master/graph/badge.svg)](https://codecov.io/gh/Saritasa/php-laravel-fluent-validation)
 
 Use fluent-style syntax to build [Laravel validation rules](https://laravel.com/docs/5.4/validation#available-validation-rules)
@@ -47,7 +47,7 @@ $ composer require saritasa/laravel-fluent-validation
 ```
 
 If you use Laraval 5.4 or less,
-or 5.5 with [package discovery](https://laravel.com/docs/5.5/packages#package-discovery) disabled,
+or 5.5+ with [package discovery](https://laravel.com/docs/5.5/packages#package-discovery) disabled,
 add the FluentValidationServiceProvider in ``config/app.php``:
 
 ```php
