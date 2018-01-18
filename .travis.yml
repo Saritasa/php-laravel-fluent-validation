@@ -3,16 +3,14 @@ language: php
 cache:
   directories:
     - $COMPOSER_CACHE_DIR
-    - $HOME/.composer/cache
 
 php:
   - 7.0
   - 7.1
+  - 7.2
 
-before_install:
-  - composer global require hirak/prestissimo --update-no-dev
-
-install: composer update --no-interaction --prefer-dist
+install:
+  - composer update --no-interaction --prefer-dist
 
 script:
   - vendor/bin/phpunit
