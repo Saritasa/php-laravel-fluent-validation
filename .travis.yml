@@ -13,5 +13,8 @@ install:
   - composer update --no-interaction --prefer-dist
 
 script:
-  - vendor/bin/phpunit
+  - vendor/bin/phpunit --coverage-clover=coverage.xml
   - vendor/bin/phpcs
+
+after_success:
+    - bash <(curl -s https://codecov.io/bash)

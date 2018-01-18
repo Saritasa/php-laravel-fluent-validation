@@ -1,4 +1,5 @@
 # Fluent Validation Rules builders for Laravel
+
 [![Build Status](https://api.travis-ci.org/Saritasa/php-laravel-fluent-validation.svg?branch=master)](https://travis-ci.org/Saritasa/php-laravel-fluent-validation)
 
 Use fluent-style syntax to build [Laravel validation rules](https://laravel.com/docs/5.4/validation#available-validation-rules)

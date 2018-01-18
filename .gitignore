@@ -2,7 +2,4 @@
 package.xml
 /vendor
 .idea
-.php_cs.cache
-docs/_build
 /.vagrant
-/build
