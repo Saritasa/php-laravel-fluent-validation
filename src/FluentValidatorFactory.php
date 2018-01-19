@@ -10,7 +10,15 @@ use Illuminate\Validation\Factory as LaravelValidatorFactory;
  */
 class FluentValidatorFactory extends LaravelValidatorFactory
 {
-    /** @inheritdoc */
+    /**
+     * Create a new Validator instance.
+     *
+     * @param  array  $data Input data to validate
+     * @param  array  $rules Set of validation rules
+     * @param  array  $messages Custom messages for validation rules
+     * @param  array  $customAttributes Human-readable attribute names for validated attributes
+     * @return \Illuminate\Validation\Validator
+     */
     public function make(array $data, array $rules, array $messages = [], array $customAttributes = [])
     {
         $rules = array_map(function ($rule) {

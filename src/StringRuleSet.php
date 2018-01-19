@@ -46,8 +46,10 @@ class StringRuleSet extends RuleSet
     /**
      * The field under validation must match the given regular expression.
      *
-     * @param string $pattern
-     * @param bool $ignoreCase
+     * @param string $pattern Regular expression pattern with or without forward slashes.
+     *                        You may pass "/regex/i" to perform case insensitive comparison
+     * @param bool $ignoreCase You may pass flag to perform case insensitive comparison as standalone parameter
+     *                        If both "/regex/i" and $ignoreCase are provided, string flag has priority.
      * @return StringRuleSet
      */
     public function regex(string $pattern, bool $ignoreCase = false): StringRuleSet
@@ -92,7 +94,7 @@ class StringRuleSet extends RuleSet
         return $this->regex('/^\+(?:[0-9]?){6,14}[0-9]$/');
     }
 
-    public function __call($name, $arguments)
+    public function __call(string $name, array $arguments)
     {
         if (in_array($name, static::TRIVIAL_STRING_RULES)) {
             return $this->appendIfNotExists(Str::snake($name));

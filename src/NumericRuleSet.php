@@ -19,10 +19,10 @@ class NumericRuleSet extends RuleSet
     /**
      * The field under validation must be numeric and must have an exact length of value.
      *
+     * @param int $length Expected number of digits
      * @return NumericRuleSet
-     * @param int $length
      */
-    public function digits($length): NumericRuleSet
+    public function digits(int $length): NumericRuleSet
     {
         return $this->appendIfNotExists("digits:$length");
     }
@@ -30,11 +30,11 @@ class NumericRuleSet extends RuleSet
     /**
      * The field under validation must have a length between the given min and max.
      *
-     * @param $minLength
-     * @param $maxLength
+     * @param int $minLength Minimum number of digits
+     * @param int $maxLength Maximum number of digits
      * @return NumericRuleSet
      */
-    public function digitsBetween($minLength, $maxLength): NumericRuleSet
+    public function digitsBetween(int $minLength, int $maxLength): NumericRuleSet
     {
         return $this->appendIfNotExists("digits_between:$minLength,$maxLength");
     }

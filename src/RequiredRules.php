@@ -25,7 +25,7 @@ trait RequiredRules
     /**
      * The field under validation must be present and not empty only if any of the other specified fields are present.
      *
-     * @param \string[] $otherFields
+     * @param \string[] $otherFields Field is required, if any of these fields present
      * @return static
      */
     public function requiredWith(string ...$otherFields)
@@ -36,7 +36,7 @@ trait RequiredRules
     /**
      * The field under validation must be present and not empty only if all of the other specified fields are present.
      *
-     * @param \string[] ...$otherFields
+     * @param \string[] ...$otherFields Field is required, if all of these fields present
      * @return static
      */
     public function requiredWithAll(string ...$otherFields)
@@ -47,7 +47,7 @@ trait RequiredRules
     /**
      * The field under validation must be present and not empty only when any of the other specified fields are not present.
      *
-     * @param \string[] ...$otherFields
+     * @param \string[] ...$otherFields Field is required, if any of these fields is absent
      * @return static
      */
     public function requiredWithout(string ...$otherFields)
@@ -58,7 +58,7 @@ trait RequiredRules
     /**
      * The field under validation must be present and not empty only when all of the other specified fields are not present.
      *
-     * @param \string[] ...$otherFields
+     * @param \string[] ...$otherFields Field is required, if all of these fields absent
      * @return static
      */
     public function requiredWithoutAll(string ...$otherFields)
@@ -69,8 +69,8 @@ trait RequiredRules
     /**
      * The field under validation must be present and not empty if the anotherField field is equal to any value.
      *
-     * @param string $anotherField
-     * @param mixed $value
+     * @param string $anotherField Field name to compare with
+     * @param mixed $value Value of another field to compare with
      * @return static
      */
     public function requiredIf(string $anotherField, $value)
@@ -81,8 +81,8 @@ trait RequiredRules
     /**
      * The field under validation must be present and not empty unless the anotherField field is equal to any value.
      *
-     * @param string $anotherField
-     * @param mixed $value
+     * @param string $anotherField Field to compare with
+     * @param mixed $value Value of another field to compare with
      * @return static
      */
     public function requiredUnless(string $anotherField, $value)

@@ -53,7 +53,11 @@ class RuleSet implements IRule
         'custom',
     ];
 
-    /** @var array */
+    /**
+     * Array of accumulated rules
+     *
+     * @var array
+     */
     protected $rules;
 
     public function __construct(array $rules = [])
@@ -66,11 +70,11 @@ class RuleSet implements IRule
      * proxy calls to method, that appends known string rules to current set.
      *
      * @param string $name Method name
-     * @param array $arguments
+     * @param array $arguments Arguments, that should be passed to method being invoked
      * @return static
      * @throws NotImplementedException if requested method is unknown
      */
-    public function __call($name, $arguments)
+    public function __call(string $name, array $arguments)
     {
         if (in_array($name, static::TRIVIAL_RULES)) {
             return $this->appendIfNotExists($name);
@@ -83,7 +87,7 @@ class RuleSet implements IRule
      * Append rule to current set of rules, but only if it doesn't contain this rule yet.
      * Creates new immutable set of rules, if rule was added.
      *
-     * @param string $rule
+     * @param string $rule Rule to add
      * @return $this|static
      */
     protected function appendIfNotExists($rule)
@@ -99,8 +103,8 @@ class RuleSet implements IRule
      * Append rule to array, if it is not contained in array yet.
      * Original array remains intact, new one is returned on changes.
      *
-     * @param string $rule
-     * @param array $rules
+     * @param string $rule Rule to add
+     * @param array $rules Set of rules, to which rule from first argument should be appended
      * @return array
      */
     protected static function mergeIfNotExists(string $rule, array $rules = []): array

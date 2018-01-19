@@ -13,7 +13,7 @@ trait SimpleRules
     /**
      * The field under validation must exist in anotherField's values.
      *
-     * @param string $anotherFiled
+     * @param string $anotherFiled Field to validate against
      * @return static
      */
     public function inArray(string $anotherFiled)
@@ -24,7 +24,7 @@ trait SimpleRules
     /**
      * The field under validation must be included in the given list of values.
      *
-     * @param array ...$values
+     * @param array ...$values List of values to validate against
      * @return static
      */
     public function in(...$values)
@@ -36,7 +36,7 @@ trait SimpleRules
     /**
      * The field under validation must not be included in the given list of values.
      *
-     * @param array ...$values
+     * @param array ...$values List of values to validate against
      * @return static
      */
     public function notIn(...$values)
@@ -48,7 +48,7 @@ trait SimpleRules
     /**
      * The given field must match the field under validation.
      *
-     * @param string $anotherField
+     * @param string $anotherField Name of field to compare with
      * @return static
      */
     public function same(string $anotherField)
@@ -59,7 +59,7 @@ trait SimpleRules
     /**
      * The field under validation must have a different value than field.
      *
-     * @param string $anotherFiled
+     * @param string $anotherFiled Name of field to compare with
      * @return static
      */
     public function different(string $anotherFiled)
@@ -121,7 +121,7 @@ trait SimpleRules
      * For an array, size corresponds to the count of the array.
      * For files, size corresponds to the file size in kilobytes.
      *
-     * @param int $value
+     * @param int $value Size value
      * @return static
      */
     public function size(int $value)
@@ -142,7 +142,7 @@ trait SimpleRules
     /**
      * The field under validation must pass custom validation rule.
      *
-     * @param string $customRule
+     * @param string $customRule Custom rule name
      * @return GenericRuleSet
      * @throws ConfigurationException
      * @see https://laravel.com/docs/5.4/validation#custom-validation-rules

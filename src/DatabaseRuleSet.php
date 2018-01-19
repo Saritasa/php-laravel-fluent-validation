@@ -26,8 +26,8 @@ class DatabaseRuleSet extends GenericRuleSet
     /**
      * Get a exists constraint builder instance.
      *
-     * @param  string $table
-     * @param  string $column
+     * @param  string $table Table in database, in which lookup should be performed
+     * @param  string $column Column in table, in which lookup should be performed
      * @param \Closure|null $callback callback, that will receive \Illuminate\Validation\Rules\Exists $rule
      * @return GenericRuleSet
      * @see \Illuminate\Validation\Rules\Exists
@@ -44,8 +44,8 @@ class DatabaseRuleSet extends GenericRuleSet
     /**
      * Get a unique constraint builder instance.
      *
-     * @param  string $table
-     * @param  string $column
+     * @param  string $table Table in database, in which lookup should be performed
+     * @param  string $column Column in table, in which lookup should be performed
      * @param \Closure|null $callback callback, that will receive \Illuminate\Validation\Rules\Unique $rule
      * @return GenericRuleSet
      */

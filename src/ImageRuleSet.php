@@ -9,6 +9,8 @@ use Saritasa\Exceptions\NotImplementedException;
  * Image validation rules. In addition to file validation has image dimensions rules
  * (width, height, ratio of width and height).
  *
+ * @see https://laravel.com/docs/5.5/validation#rule-dimensions
+ *
  * @method ImageRuleSet width(int $width)
  * @method ImageRuleSet height(int $height)
  * @method ImageRuleSet minWidth(int $width)
@@ -18,14 +20,21 @@ use Saritasa\Exceptions\NotImplementedException;
  */
 class ImageRuleSet extends FileRuleSet
 {
-    /** @var  Dimensions */
+    /**
+     * Expected image dimensions
+     *
+     * @var Dimensions
+     */
     protected $dimensions;
 
     /**
-     * ImageRuleSet constructor.
+     * Image validation rules. In addition to file validation has image dimensions rules
+     * (width, height, ratio of width and height).
      *
-     * @param array|\Closure|Dimensions $constraints
-     * @param array $rules
+     * @see https://laravel.com/docs/5.5/validation#rule-dimensions
+     *
+     * @param array $rules Additional validation rules
+     * @param mixed|array|\Closure|Dimensions $constraints Image dimension constraints
      */
     public function __construct(array $rules = [], $constraints = [])
     {
@@ -43,7 +52,7 @@ class ImageRuleSet extends FileRuleSet
         return $this->appendIfNotExists('file');
     }
 
-    public function __call($name, $arguments)
+    public function __call(string $name, array $arguments)
     {
         if (in_array($name, ['width', 'height', 'minWidth', 'minHeight', 'maxWidth', 'maxHeight', 'ratio'])) {
             if ($this->dimensions == null) {
@@ -56,8 +65,11 @@ class ImageRuleSet extends FileRuleSet
     }
 
     /**
-     * @param array|\Closure|Dimensions $constraints
+     * Image dimension constraints
+     *
+     * @param array|\Closure|Dimensions $constraints Image dimensions constraints
      * @return $this
+     * @see \Illuminate\Validation\Rules\Dimensions
      */
     public function dimensions($constraints)
     {

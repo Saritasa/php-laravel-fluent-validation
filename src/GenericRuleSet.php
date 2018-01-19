@@ -38,7 +38,7 @@ use Illuminate\Support\Str;
  */
 class GenericRuleSet extends RuleSet
 {
-    const EXPOSED_RULES = ['int', 'numeric', 'string'];
+    const EXPOSED_RULES = ['int', 'numeric', 'string', 'boolean', 'date', 'file'];
 
     /**
      * The field under validation must be an integer.
@@ -100,7 +100,7 @@ class GenericRuleSet extends RuleSet
         return new FileRuleSet($this->rules);
     }
 
-    public function __call($name, $arguments)
+    public function __call(string $name, array $arguments)
     {
         $ruleSet = null;
         if (in_array($name, StringRuleSet::EXPOSED_RULES)) {

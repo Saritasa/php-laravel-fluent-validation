@@ -24,6 +24,8 @@ use Saritasa\Laravel\Validation\Rules\Phone;
 class PhoneRuleSet extends StringRuleSet
 {
     /**
+     * Phone validation rule
+     *
      * @var Phone
      */
     protected $rule;
@@ -31,7 +33,7 @@ class PhoneRuleSet extends StringRuleSet
     /**
      * PhoneRuleSet constructor.
      *
-     * @param array $rules
+     * @param array $rules Set of rules to merge with
      */
     public function __construct(array $rules = [])
     {
@@ -49,7 +51,7 @@ class PhoneRuleSet extends StringRuleSet
         }
     }
 
-    public function __call($name, $arguments)
+    public function __call(string $name, array $arguments)
     {
         if (method_exists($this->rule, $name)) {
             call_user_func_array([$this->rule, $name], $arguments);

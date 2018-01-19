@@ -132,7 +132,8 @@ class Rule
     /**
      * The file under validation must be an image (jpeg, png, bmp, gif, or svg)
      *
-     * @param array|\Closure|\Illuminate\Validation\Rules\Dimensions $constraints
+     * @param array|\Closure|\Illuminate\Validation\Rules\Dimensions $constraints Image constraints
+     * @see https://laravel.com/docs/5.5/validation#rule-dimensions
      * @return ImageRuleSet
      */
     public static function image($constraints = []): ImageRuleSet

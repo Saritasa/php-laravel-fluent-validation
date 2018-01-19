@@ -23,7 +23,9 @@ class FileRuleSet extends RuleSet
     }
 
     /**
-     * @param array|\Closure $constraints
+     * Field under validation must contain image
+     *
+     * @param array|\Closure $constraints Image dimensions constraints
      * @return ImageRuleSet
      */
     public function image($constraints = []): ImageRuleSet
@@ -35,7 +37,7 @@ class FileRuleSet extends RuleSet
      * The file under validation must match one of the given MIME types
      * To determine the MIME type of the uploaded file, the file's contents will be read and the framework will attempt to guess the MIME type, which may be different from the client provided MIME type.
      *
-     * @param \string[] ...$types
+     * @param \string[] ...$types List of allowed MIME types
      * @return $this|static
      */
     public function mimetypes(string ...$types)
@@ -54,7 +56,7 @@ class FileRuleSet extends RuleSet
      * A full listing of MIME types and their corresponding extensions may be found at the following location:
      * https://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types
      *
-     * @param \string[] ...$extensions
+     * @param \string[] ...$extensions List of allowed file extensions
      * @return $this|static
      */
     public function mimes(string ...$extensions)

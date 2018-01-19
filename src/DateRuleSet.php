@@ -34,7 +34,7 @@ class DateRuleSet extends RuleSet
      *
      * 'finish_date' => 'required|date|after:start_date'
      *
-     * @param Carbon|string $date
+     * @param Carbon|string $date Value must be after this date
      * @return $this|static
      */
     public function after($date)
@@ -47,7 +47,7 @@ class DateRuleSet extends RuleSet
      * For more information, see the after rule.
      *
      * @see after
-     * @param Carbon|string $date
+     * @param Carbon|string $date Value must be after or equal this date
      * @return $this|static
      */
     public function afterOrEqual($date)
@@ -59,7 +59,7 @@ class DateRuleSet extends RuleSet
      * The field under validation must be a value preceding the given date.
      * The dates will be passed into the PHP strtotime function.
      *
-     * @param Carbon|string $date
+     * @param Carbon|string $date Value must be preceding this date
      * @return $this|static
      */
     public function before($date)
@@ -71,7 +71,7 @@ class DateRuleSet extends RuleSet
      * The field under validation must be a value preceding or equal to the given date.
      * The dates will be passed into the PHP strtotime function.
      *
-     * @param Carbon|string $date
+     * @param Carbon|string $date Value must be before or equal this date
      * @return $this|static
      */
     public function beforeOrEqual($date)
