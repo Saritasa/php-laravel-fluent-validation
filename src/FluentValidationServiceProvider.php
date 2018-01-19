@@ -7,6 +7,7 @@ use Propaganistas\LaravelPhone\PhoneServiceProvider;
 
 /**
  * Service provider substitutes default Laravel's validation factory
+ *
  * @see FluentValidatorFactory
  */
 class FluentValidationServiceProvider extends ValidationServiceProvider

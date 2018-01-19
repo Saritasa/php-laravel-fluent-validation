@@ -23,6 +23,7 @@ class ImageRuleSet extends FileRuleSet
 
     /**
      * ImageRuleSet constructor.
+     *
      * @param array|\Closure|Dimensions $constraints
      * @param array $rules
      */
@@ -34,6 +35,7 @@ class ImageRuleSet extends FileRuleSet
 
     /**
      * The field under validation must be a successfully uploaded file.
+     *
      * @return $this|static
      */
     public function file()

@@ -42,6 +42,7 @@ class GenericRuleSet extends RuleSet
 
     /**
      * The field under validation must be an integer.
+     *
      * @return IntRuleSet
      */
     public function int(): IntRuleSet
@@ -51,6 +52,7 @@ class GenericRuleSet extends RuleSet
 
     /**
      * The field under validation must be numeric.
+     *
      * @return NumericRuleSet
      */
     public function numeric(): NumericRuleSet
@@ -60,6 +62,7 @@ class GenericRuleSet extends RuleSet
 
     /**
      * The field under validation must be a string. If you would like to allow the field to also be null, you should assign the nullable rule to the field.
+     *
      * @return StringRuleSet
      */
     public function string(): StringRuleSet
@@ -69,6 +72,7 @@ class GenericRuleSet extends RuleSet
 
     /**
      * The field under validation must be able to be cast as a boolean. Accepted input are true,  false, 1, 0, "1", and "0".
+     *
      * @return GenericRuleSet
      */
     public function boolean(): GenericRuleSet
@@ -78,6 +82,7 @@ class GenericRuleSet extends RuleSet
 
     /**
      * The field under validation must be a valid date according to the strtotime PHP function.
+     *
      * @return DateRuleSet
      */
     public function date(): DateRuleSet
@@ -87,6 +92,7 @@ class GenericRuleSet extends RuleSet
 
     /**
      * The field under validation must be a successfully uploaded file.
+     *
      * @return FileRuleSet
      */
     public function file(): FileRuleSet

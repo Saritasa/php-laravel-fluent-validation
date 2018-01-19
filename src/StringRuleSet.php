@@ -63,6 +63,7 @@ class StringRuleSet extends RuleSet
 
     /**
      * Field under validation must match one of values of specified Enum
+     *
      * @see https://github.com/Saritasa/php-common#enum
      *
      * @param string $enumClass Enumeration to validate against

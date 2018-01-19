@@ -24,6 +24,7 @@ trait RequiredRules
 
     /**
      * The field under validation must be present and not empty only if any of the other specified fields are present.
+     *
      * @param \string[] $otherFields
      * @return static
      */
@@ -34,6 +35,7 @@ trait RequiredRules
 
     /**
      * The field under validation must be present and not empty only if all of the other specified fields are present.
+     *
      * @param \string[] ...$otherFields
      * @return static
      */
@@ -44,6 +46,7 @@ trait RequiredRules
 
     /**
      * The field under validation must be present and not empty only when any of the other specified fields are not present.
+     *
      * @param \string[] ...$otherFields
      * @return static
      */
@@ -54,6 +57,7 @@ trait RequiredRules
 
     /**
      * The field under validation must be present and not empty only when all of the other specified fields are not present.
+     *
      * @param \string[] ...$otherFields
      * @return static
      */
@@ -64,6 +68,7 @@ trait RequiredRules
 
     /**
      * The field under validation must be present and not empty if the anotherField field is equal to any value.
+     *
      * @param string $anotherField
      * @param mixed $value
      * @return static
@@ -75,6 +80,7 @@ trait RequiredRules
 
     /**
      * The field under validation must be present and not empty unless the anotherField field is equal to any value.
+     *
      * @param string $anotherField
      * @param mixed $value
      * @return static

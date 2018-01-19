@@ -81,6 +81,7 @@ class Rule
 
     /**
      * The field under validation must be an integer.
+     *
      * @return IntRuleSet
      */
     public static function int(): IntRuleSet
@@ -90,6 +91,7 @@ class Rule
 
     /**
      * The field under validation must be numeric.
+     *
      * @return NumericRuleSet
      */
     public static function numeric(): NumericRuleSet
@@ -99,6 +101,7 @@ class Rule
 
     /**
      * The field under validation must be a string. If you would like to allow the field to also be null, you should assign the nullable rule to the field.
+     *
      * @return StringRuleSet
      */
     public static function string(): StringRuleSet
@@ -108,6 +111,7 @@ class Rule
 
     /**
      * The field under validation must be a successfully uploaded file.
+     *
      * @return FileRuleSet
      */
     public static function file(): FileRuleSet
@@ -117,6 +121,7 @@ class Rule
 
     /**
      * The field under validation must be a valid date according to the strtotime PHP function.
+     *
      * @return DateRuleSet
      */
     public static function date(): DateRuleSet
@@ -126,6 +131,7 @@ class Rule
 
     /**
      * The file under validation must be an image (jpeg, png, bmp, gif, or svg)
+     *
      * @param array|\Closure|\Illuminate\Validation\Rules\Dimensions $constraints
      * @return ImageRuleSet
      */

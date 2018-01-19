@@ -12,6 +12,7 @@ trait SimpleRules
 {
     /**
      * The field under validation must exist in anotherField's values.
+     *
      * @param string $anotherFiled
      * @return static
      */
@@ -22,6 +23,7 @@ trait SimpleRules
 
     /**
      * The field under validation must be included in the given list of values.
+     *
      * @param array ...$values
      * @return static
      */
@@ -33,6 +35,7 @@ trait SimpleRules
 
     /**
      * The field under validation must not be included in the given list of values.
+     *
      * @param array ...$values
      * @return static
      */
@@ -44,6 +47,7 @@ trait SimpleRules
 
     /**
      * The given field must match the field under validation.
+     *
      * @param string $anotherField
      * @return static
      */
@@ -54,6 +58,7 @@ trait SimpleRules
 
     /**
      * The field under validation must have a different value than field.
+     *
      * @param string $anotherFiled
      * @return static
      */
@@ -64,6 +69,7 @@ trait SimpleRules
 
     /**
      * The field under validation must have a minimum value. Strings, numerics, arrays, and files are evaluated in the same fashion as the size rule.
+     *
      * @param integer $minimalValue For numeric data, value corresponds to a given integer value.
      *                              For an array, size corresponds to the count of the array.
      *                              For string data, value corresponds to the number of characters.
@@ -77,6 +83,7 @@ trait SimpleRules
 
     /**
      * The field under validation must be less than or equal to a maximum value. Strings, numerics, arrays, and files are evaluated in the same fashion as the size rule.
+     *
      * @param integer $maximalValue For numeric data, value corresponds to a given integer value.
      *                              For an array, size corresponds to the count of the array.
      *                              For string data, value corresponds to the number of characters.
@@ -90,6 +97,7 @@ trait SimpleRules
 
     /**
      * The field under validation must have a size between the given min and max. Strings, numerics, arrays, and files are evaluated in the same fashion as the size rule.
+     *
      * @param integer $minimalValue For numeric data, value corresponds to a given integer value.
      *                              For an array, size corresponds to the count of the array.
      *                              For string data, value corresponds to the number of characters.
@@ -123,6 +131,7 @@ trait SimpleRules
 
     /**
      * Run validation checks against a field only if that field is present in the input array.
+     *
      * @return static
      */
     public function sometimes()
@@ -132,6 +141,7 @@ trait SimpleRules
 
     /**
      * The field under validation must pass custom validation rule.
+     *
      * @param string $customRule
      * @return GenericRuleSet
      * @throws ConfigurationException

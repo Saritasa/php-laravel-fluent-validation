@@ -18,6 +18,7 @@ class NumericRuleSet extends RuleSet
 
     /**
      * The field under validation must be numeric and must have an exact length of value.
+     *
      * @return NumericRuleSet
      * @param int $length
      */
@@ -28,6 +29,7 @@ class NumericRuleSet extends RuleSet
 
     /**
      * The field under validation must have a length between the given min and max.
+     *
      * @param $minLength
      * @param $maxLength
      * @return NumericRuleSet
