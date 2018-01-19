@@ -13,6 +13,9 @@ use Illuminate\Support\Str;
  * @method GenericRuleSet unique(string $table, string $column, \Closure $closure = null) Get a unique constraint builder instance.
  *
  * @method StringRuleSet activeUrl() The field under validation must have a valid A or AAAA record according to the dns_get_record PHP function.
+ * @method StringRuleSet alpha() The field under validation must be entirely alphabetic characters.
+ * @method StringRuleSet alphaDash() The field under validation may have alpha-numeric characters, as well as dashes and underscores.
+ * @method StringRuleSet alphaNum() The field under validation must be entirely alpha-numeric characters.
  * @method StringRuleSet email() The field under validation must be formatted as an e-mail address.
  * @method StringRuleSet ip() The field under validation must be an IP address.
  * @method StringRuleSet ipv4() The field under validation must be an IPv4 address.
@@ -20,6 +23,8 @@ use Illuminate\Support\Str;
  * @method StringRuleSet json() The field under validation must be a valid JSON string.
  * @method StringRuleSet timezone() The field under validation must be a valid timezone identifier according to the timezone_identifiers_list PHP function
  * @method StringRuleSet url() The field under validation must be a valid URL.
+ * @method StringRuleSet enum(string $enumClass) Field under validation must match one of values of specified Enum
+
  * @method FileRuleSet mimetypes(string ...$types) The file under validation must match one of the given MIME types. To determine the MIME type of the uploaded file, the file's contents will be read and the framework will attempt to guess the MIME type, which may be different from the client provided MIME type.
  * @method FileRuleSet mimes(string ...$extensions) The file under validation must have a MIME type corresponding to one of the listed extensions.
  *

@@ -5,6 +5,7 @@ namespace Saritasa\Laravel\Validation\Tests;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\TestCase;
 use Saritasa\Enums\Gender;
+use Saritasa\Exceptions\NotImplementedException;
 use Saritasa\Laravel\Validation\Rule;
 use Saritasa\Laravel\Validation\RuleSet;
 
@@ -104,5 +105,15 @@ class RuleTest extends TestCase
 
         $rules = Rule::requiredWithout('facebook_token')->confirmed();
         $this->assertEquals('required_without:facebook_token|confirmed',  $rules);
+    }
+
+
+    /**
+     * Requesting non-registered rule should throw "Not Implemented" exception
+     */
+    public function testNonExistent()
+    {
+        $this->expectException(NotImplementedException::class);
+        Rule::nonExistent();
     }
 }

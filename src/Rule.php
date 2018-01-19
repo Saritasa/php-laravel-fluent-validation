@@ -48,6 +48,7 @@ use Saritasa\Exceptions\NotImplementedException;
  * @method static StringRuleSet url() The field under validation must be a valid URL.
  * @method static StringRuleSet regex(string $pattern, bool $ignoreCase = false) The field under validation must match the given regular expression.
  * @method static StringRuleSet phoneRegex() Shortcut method for validating phone with use regex.
+ * @method static StringRuleSet enum(string $enumClass) Field under validation must match one of values of specified Enum
 
  * @method static FileRuleSet mimetypes(string ...$types) The file under validation must match one of the given MIME types. To determine the MIME type of the uploaded file, the file's contents will be read and the framework will attempt to guess the MIME type, which may be different from the client provided MIME type.
  * @method static FileRuleSet mimes(string ...$extensions) The file under validation must have a MIME type corresponding to one of the listed extensions.
@@ -144,7 +145,7 @@ class Rule
      *
      * @return PhoneRuleSet
      */
-    public static function phone()
+    public static function phone(): PhoneRuleSet
     {
         return new PhoneRuleSet();
     }

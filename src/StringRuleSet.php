@@ -3,6 +3,7 @@
 namespace Saritasa\Laravel\Validation;
 
 use Illuminate\Support\Str;
+use Saritasa\Enum;
 
 /**
  * Rules, that are reasonable for strings only
@@ -21,7 +22,7 @@ use Illuminate\Support\Str;
  */
 class StringRuleSet extends RuleSet
 {
-    const EXPOSED_RULES = ['email', 'regex', 'timezone', 'phoneRegex'];
+    const EXPOSED_RULES = ['email', 'regex', 'timezone', 'phoneRegex', 'enum'];
 
     const TRIVIAL_STRING_RULES = [
         'activeUrl',
@@ -44,6 +45,7 @@ class StringRuleSet extends RuleSet
 
     /**
      * The field under validation must match the given regular expression.
+     *
      * @param string $pattern
      * @param bool $ignoreCase
      * @return StringRuleSet
@@ -57,6 +59,21 @@ class StringRuleSet extends RuleSet
             $pattern .= 'i';
         }
         return $this->appendIfNotExists("regex:$pattern");
+    }
+
+    /**
+     * Field under validation must match one of values of specified Enum
+     * @see https://github.com/Saritasa/php-common#enum
+     *
+     * @param string $enumClass Enumeration to validate against
+     * @return StringRuleSet
+     */
+    public function enum(string $enumClass): StringRuleSet
+    {
+        if (!is_a($enumClass, Enum::class, true)) {
+            throw new \UnexpectedValueException('Class is not enum');
+        }
+        return $this->appendIfNotExists(Rule::in($enumClass::getConstants()));
     }
 
     /**

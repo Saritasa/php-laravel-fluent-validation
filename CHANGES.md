@@ -1,5 +1,9 @@
 # Changes History
 
+1.0.10
+------
+Enum rule. See
+
 1.0.9
 -----
 Enable Laravel's package discovery https://laravel.com/docs/5.5/packages#package-discovery
