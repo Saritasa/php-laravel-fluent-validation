@@ -2,7 +2,7 @@
 
 1.0.10
 ------
-Enum rule. See
+Enum rule. See https://github.com/Saritasa/php-common#enum
 
 1.0.9
 -----
