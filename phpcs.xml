@@ -8,7 +8,7 @@
     <exclude-pattern>*.xml</exclude-pattern>
 
     <arg name="colors"/>
-    <arg value="p"/>
+    <arg value="ps"/>
 
     <rule ref="PSR2">
         <exclude name="Generic.Files.LineLength"/>
@@ -19,7 +19,7 @@
     <rule ref="Generic.Commenting.DocComment.SpacingBeforeTags" />
     <rule ref="MySource.Commenting.FunctionComment.InvalidReturn" />
     <rule ref="MySource.Commenting.FunctionComment.MissingParamComment" />
-    <rule ref="MySource.Commenting.FunctionComment.TypeHintMissing" />
+    <!--<rule ref="MySource.Commenting.FunctionComment.TypeHintMissing" />-->
     <rule ref="Generic.Arrays.DisallowLongArraySyntax" />
     <rule ref="Generic.Classes.DuplicateClassName" />
     <rule ref="Generic.CodeAnalysis.EmptyStatement" />
@@ -27,8 +27,9 @@
     <rule ref="Generic.CodeAnalysis.JumbledIncrementer" />
     <rule ref="Generic.CodeAnalysis.UnconditionalIfStatement" />
     <rule ref="Generic.CodeAnalysis.UnnecessaryFinalModifier" />
-    <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter" />
-    <rule ref="Generic.CodeAnalysis.UselessOverridingMethod" />
+    <!--<rule ref="Generic.CodeAnalysis.UnusedFunctionParameter" />-->
+    <!--<rule ref="Generic.CodeAnalysis.UselessOverridingMethod" />-->
     <rule ref="Generic.Commenting.Fixme" />
-    <rule ref="Generic.Commenting.Todo" />
-    <rule ref="Generic.ControlStructures.InlineControlStructure" /></ruleset>
+    <!--<rule ref="Generic.Commenting.Todo" />-->
+    <rule ref="Generic.ControlStructures.InlineControlStructure" />
+</ruleset>
