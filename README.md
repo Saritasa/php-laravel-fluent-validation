@@ -2,6 +2,9 @@
 
 [![Build Status](https://travis-ci.org/Saritasa/php-laravel-fluent-validation.svg?branch=master)](https://travis-ci.org/Saritasa/php-laravel-fluent-validation)
 [![codecov](https://codecov.io/gh/Saritasa/php-laravel-fluent-validation/branch/master/graph/badge.svg)](https://codecov.io/gh/Saritasa/php-laravel-fluent-validation)
+[![Release](https://img.shields.io/github/release/saritasa/php-laravel-fluent-validation.svg)](https://github.com/Saritasa/php-laravel-fluent-validation/releases)
+[![PHPv](https://img.shields.io/packagist/php-v/saritasa/laravel-fluent-validation.svg)](http://www.php.net)
+[![Downloads](https://img.shields.io/packagist/dt/saritasa/laravel-fluent-validation.svg)](https://packagist.org/packages/saritasa/laravel-fluent-validation)
 
 Use fluent-style syntax to build [Laravel validation rules](https://laravel.com/docs/5.4/validation#available-validation-rules)
 
@@ -70,14 +73,30 @@ Root of your rule builder.
 
 ## Contributing
 
-1. Create fork
-2. Checkout fork
-3. Develop locally as usual. **Code must follow [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http://www.php-fig.org/psr/psr-2/)**
-4. Run [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) to ensure, that code follows style guides,
-and [PHPUnit](https://phpunit.de/) to ensure, that unit tests still pass.
-5. Add unit tests, that cover added or changed functionality.
-6. Update [README.md](README.md) to describe new or changed functionality. Add changes description to [CHANGES.md](CHANGES.md) file.
-7. When ready, create pull request
+1. Create fork, checkout it
+2. Develop locally as usual. **Code must follow [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http://www.php-fig.org/psr/psr-2/)** -
+    run [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) to ensure, that code follows style guides
+3. **Cover added functionality with unit tests** and run [PHPUnit](https://phpunit.de/) to make sure, that all tests pass
+4. Update [README.md](README.md) to describe new or changed functionality.
+5. Add changes description to [CHANGES.md](CHANGES.md) file.
+6. When ready, create pull request
+
+### Make shortcuts
+
+If you have [GNU Make](https://www.gnu.org/software/make/) installed, you can use following shortcuts:
+
+* ```make cs``` (instead of ```php vendor/bin/phpcs```) -
+    run static code analysis with [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)
+    to check code style
+* ```make csfix``` (instead of ```php vendor/bin/phpcbf```) -
+    fix code style violations with [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)
+    automatically, where possible (ex. PSR-2 code formatting violations)
+* ```make test``` (instead of ```php vendor/bin/phpunit```) -
+    run tests with [PHPUnit](https://phpunit.de/)
+* ```make install``` - instead of ```composer install```
+* ```make all``` or just ```make``` without parameters -
+    invokes described above **install**, **cs**, **test** tasks sequentially -
+    project will be assembled, checked with linter and tested with one single command
 
 ## Resources
 

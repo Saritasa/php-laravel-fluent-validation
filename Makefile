@@ -1,3 +1,8 @@
+all: install cs test
+
+install:
+	composer install
+
 cs:
 	php vendor/bin/phpcs
 
