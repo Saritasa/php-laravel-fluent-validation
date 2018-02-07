@@ -2,12 +2,15 @@
 
 namespace Saritasa\Laravel\Validation\Tests;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Validation\Rules\Exists;
 use Illuminate\Validation\Rules\Unique;
 use PHPUnit\Framework\TestCase;
+use Saritasa\Enums\Gender;
 use Saritasa\Exceptions\ConfigurationException;
 use Saritasa\Laravel\Validation\Rule;
+use UnexpectedValueException;
 
 class DatabaseRulesTest extends TestCase
 {
@@ -37,7 +40,6 @@ class DatabaseRulesTest extends TestCase
 
         Rule::exists('users', 'email');
     }
-
 
     /**
      * Basic form of Rule::exists('table', 'column') works.
@@ -101,4 +103,45 @@ class DatabaseRulesTest extends TestCase
 
         $this->assertEquals('unique:users,email,"123",id,deleted_at,NULL|required_without:facebook_id', $rules);
     }
+
+    /*
+     * Test modelExists rule.
+     */
+    public function testModelExists()
+    {
+        $this->allowDbValidation(true);
+        $rules = Rule::modelExists(TestUserModel::class);
+        $this->assertEquals('exists:users,user_id', $rules->toString());
+    }
+
+    /*
+     * Test modelExists rule with passed callback.
+     */
+    public function testModelExistsWithBuilder()
+    {
+        $this->allowDbValidation(true);
+        $rules = Rule::modelExists(TestUserModel::class, function (Exists $rule) {
+            $rule->whereNull('avatar_url')->where('active', 1);
+        });
+        $this->assertEquals('exists:users,user_id,avatar_url,NULL,active,1', $rules->toString());
+    }
+
+    /*
+     * Test that modelExists supports only model class names.
+     */
+    public function testModelExistsNotModel()
+    {
+        $this->allowDbValidation(true);
+        $this->expectException(UnexpectedValueException::class);
+        Rule::modelExists(Gender::class);
+    }
+}
+
+/**
+ * Test model class to check modelExists rule. Should not be used in code.
+ */
+class TestUserModel extends Model
+{
+    protected $table = 'users';
+    protected $primaryKey = 'user_id';
 }
