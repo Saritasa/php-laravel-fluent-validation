@@ -13,7 +13,8 @@ Use fluent-style syntax to build [Laravel validation rules](https://laravel.com/
 $rules = [
     'id' => Rule::int()->required(),
     'name' => Rule::string()->required()->minLength(3)->toString(),
-    'email' => Rule::string()->required()->email()->toArray()
+    'email' => Rule::string()->required()->email()->toArray(),
+    'role_id' => Rule::modelExists(Role::class),
 ]
 ```
 ## Advantages

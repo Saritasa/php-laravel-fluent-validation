@@ -1,5 +1,9 @@
 # Changes History
 
+1.0.11
+------
+Added modelExists() to check that identifier exists among passed model class instances
+
 1.0.10
 ------
 Enum rule. See https://github.com/Saritasa/php-common#enum
