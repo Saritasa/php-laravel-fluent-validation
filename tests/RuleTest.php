@@ -157,6 +157,21 @@ class RuleTest extends TestCase
     }
 
     /**
+     * Test that rule leaves the same when condition is false and false callback not passed to when() method.
+     */
+    public function testWhenFalseCallbackNotPassed()
+    {
+        $rule = Rule::string()->when(
+            false,
+            function (RuleSet $rule) {
+                return $rule->max(10); // Should not be executed as passed condition is false
+            }
+        );
+
+        $this->assertEquals('string', $rule->toString());
+    }
+
+    /**
      * Test that callback of when() method should return instance of RuleSet class.
      */
     public function testWhenUnexpectedResultInCallback()
