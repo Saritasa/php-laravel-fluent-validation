@@ -1,8 +1,12 @@
 # Changes History
 
-1.0.11
+1.0.12
 ------
 Added modelExists() to check that identifier exists among passed model class instances
+
+1.0.11
+------
+Added when() method that allows to build rules according to conditions
 
 1.0.10
 ------

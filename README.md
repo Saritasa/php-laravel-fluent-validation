@@ -15,6 +15,14 @@ $rules = [
     'name' => Rule::string()->required()->minLength(3)->toString(),
     'email' => Rule::string()->required()->email()->toArray(),
     'role_id' => Rule::modelExists(Role::class),
+    'salary' => Rule::int()->when($isPHPDeveloper, 
+                             function($ruleWhenTrue) { 
+                                 return $ruleWhenTrue->min(1000000); 
+                             }, 
+                             function($ruleWhenFalse) { 
+                                 return $ruleWhenFalse->max(1000); 
+                             }
+    )
 ]
 ```
 ## Advantages
