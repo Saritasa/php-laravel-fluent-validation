@@ -13,6 +13,8 @@ Use fluent-style syntax to build [Laravel validation rules](https://laravel.com/
 $rules = [
     'id' => Rule::int()->required(),
     'name' => Rule::string()->required()->minLength(3)->toString(),
+    'email' => Rule::string()->required()->email()->toArray(),
+    'role_id' => Rule::modelExists(Role::class),
     'salary' => Rule::int()->when($isPHPDeveloper, 
                              function($ruleWhenTrue) { 
                                  return $ruleWhenTrue->min(1000000); 
@@ -20,8 +22,7 @@ $rules = [
                              function($ruleWhenFalse) { 
                                  return $ruleWhenFalse->max(1000); 
                              }
-    ),
-    'email' => Rule::string()->required()->email()->toArray()
+    )
 ]
 ```
 ## Advantages
