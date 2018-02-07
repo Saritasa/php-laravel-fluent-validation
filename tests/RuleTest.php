@@ -2,12 +2,14 @@
 
 namespace Saritasa\Laravel\Validation\Tests;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\TestCase;
 use Saritasa\Enums\Gender;
 use Saritasa\Exceptions\NotImplementedException;
 use Saritasa\Laravel\Validation\Rule;
 use Saritasa\Laravel\Validation\RuleSet;
+use UnexpectedValueException;
 
 /**
  * Test basic features
@@ -101,10 +103,10 @@ class RuleTest extends TestCase
         $rules = Rule::string()->required()->min(3);
         $this->assertEquals('string|required|min:3', $rules);
 
-        $this->assertEquals('string|email|nullable|present',  Rule::email()->nullable()->present());
+        $this->assertEquals('string|email|nullable|present', Rule::email()->nullable()->present());
 
         $rules = Rule::requiredWithout('facebook_token')->confirmed();
-        $this->assertEquals('required_without:facebook_token|confirmed',  $rules);
+        $this->assertEquals('required_without:facebook_token|confirmed', $rules);
     }
 
 
@@ -115,5 +117,99 @@ class RuleTest extends TestCase
     {
         $this->expectException(NotImplementedException::class);
         Rule::nonExistent();
+    }
+
+    /**
+     * Test that rule appended inside true callback of when() method.
+     */
+    public function testWhenTrueCallback()
+    {
+        $isPHPDeveloper = true;
+
+        $salaryRule = Rule::int()->when($isPHPDeveloper,
+            function(RuleSet $ruleWhenTrue) {
+                return $ruleWhenTrue->min(1000000);
+            },
+            function(RuleSet $ruleWhenFalse) {
+                return $ruleWhenFalse->max(1000);
+            }
+        );
+
+        $this->assertEquals('integer|min:1000000', $salaryRule->toString());
+    }
+
+    /**
+     * Test that rule appended inside false callback of when() method.
+     */
+    public function testWhenFalseCallback()
+    {
+        $rule = Rule::string()->when(
+            false,
+            function (RuleSet $rule) {
+                return $rule->max(10); // Should not be executed as passed condition is false
+            },
+            function (RuleSet $rule) {
+                return $rule->min(10); // Should be executed as passed condition if false
+            }
+        );
+
+        $this->assertEquals('string|min:10', $rule->toString());
+    }
+
+    /**
+     * Test that callback of when() method should return instance of RuleSet class.
+     */
+    public function testWhenUnexpectedResultInCallback()
+    {
+        $this->expectException(UnexpectedValueException::class);
+
+        Rule::string()->when(true, function () {
+            return 'min:10'; // Invalid value. Instance of RuleSet expected
+        });
+    }
+
+    /**
+     * Test that rule appended inside callback of when() method and inside of this callback.
+     */
+    public function testDeepWhenCallback()
+    {
+        $rule = Rule::string()
+            ->when(true, function (RuleSet $rule) { // First level of condition
+                return $rule->max(10)
+                    ->when(true, function (RuleSet $rule) { // Second level of condition
+                        return $rule->nullable();
+                    });
+            });
+
+        $this->assertEquals('string|max:10|nullable', $rule->toString());
+    }
+
+    /**
+     * Test that method when() works from static call of Rule class.
+     */
+    public function testWhenFromRuleClass()
+    {
+        $rule = Rule::when(true, function (RuleSet $rule) {
+            return $rule->required()->max(10);
+        });
+
+        $this->assertEquals('required|max:10', $rule->toString());
+    }
+
+    /**
+     * Test that method when() works in instance of DatabaseRuleSet class (not only from GenericRuleSet).
+     */
+    public function testWhenFromDatabaseRuleSetClass()
+    {
+        Config::shouldReceive('get')->with('validation.allow_db', false)->andReturn(true);
+
+        $rule = Rule::exists('users', 'id')
+            ->when(true, function (RuleSet $rule) {
+                return $rule->nullable();
+            });
+
+        $this->assertEquals('exists:users,id|nullable', $rule->toString());
+
+        Config::clearResolvedInstances();
     }
 }
