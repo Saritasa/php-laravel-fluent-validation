@@ -51,6 +51,7 @@ class RuleSet implements IRule
         'size',
         'sometimes',
         'custom',
+        'when',
     ];
 
     /**
@@ -114,6 +115,34 @@ class RuleSet implements IRule
         } else {
             return array_merge($rules, [$rule]);
         }
+    }
+
+    /**
+     * Performs conditional building of rule set.
+     *
+     * @param mixed $condition Condition to check
+     * @param \Closure $trueCallback Callback that will be called when condition is TRUE.
+     * Receives current rule set value and should return instance of RuleSer class.
+     * @param \Closure|null $falseCallback Callback that will be called when condition is FALSE.
+     * Receives current rule set value and should return instance of RuleSer class.
+     *
+     * @return RuleSet
+     */
+    public function when($condition, \Closure $trueCallback, \Closure $falseCallback = null): RuleSet
+    {
+        if ((bool)$condition) {
+            $result = $trueCallback($this);
+        } elseif ($falseCallback !== null) {
+            $result = $falseCallback($this);
+        } else {
+            $result = $this;
+        }
+
+        if (!is_a($result, RuleSet::class)) {
+            throw new \UnexpectedValueException('Callback should return instance of [' . RuleSet::class . '] class');
+        }
+
+        return $result;
     }
 
     /** Return current rule set as array */
