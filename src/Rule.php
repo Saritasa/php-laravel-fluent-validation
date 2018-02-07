@@ -63,6 +63,8 @@ use Saritasa\Exceptions\NotImplementedException;
 
  * @method static DatabaseRuleSet exists(string $table, string $column, \Closure $closure = null) Get a exists constraint builder instance.
  * @method static DatabaseRuleSet unique(string $table, string $column, \Closure $closure = null) Get a unique constraint builder instance.
+ *
+ * @method static RuleSet when($condition, \Closure $trueCallback, \Closure $falseCallback = null): RuleSet Performs conditional building of rule set.
 
  */
 class Rule
