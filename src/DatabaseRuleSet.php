@@ -2,6 +2,7 @@
 
 namespace Saritasa\Laravel\Validation;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Config;
 use Saritasa\Exceptions\ConfigurationException;
 
@@ -10,7 +11,7 @@ use Saritasa\Exceptions\ConfigurationException;
  */
 class DatabaseRuleSet extends GenericRuleSet
 {
-    const EXPOSED_RULES = ['exists', 'unique'];
+    const EXPOSED_RULES = ['exists', 'modelExists', 'unique'];
 
     public function __construct(array $rules = [])
     {
@@ -39,6 +40,30 @@ class DatabaseRuleSet extends GenericRuleSet
             $callback($rule);
         }
         return $this->appendIfNotExists((string)$rule);
+    }
+
+    /**
+     * Get a exists constraint builder instance by model class.
+     *
+     * @param string $modelClass Enumeration to validate against
+     * @param \Closure|null $callback callback, that will receive \Illuminate\Validation\Rules\Exists $rule
+     * @return GenericRuleSet
+     * @see \Illuminate\Validation\Rules\Exists
+     * @see DatabaseRuleSet::exists
+     */
+    public function modelExists(string $modelClass, \Closure $callback = null): GenericRuleSet
+    {
+        if (!is_a($modelClass, Model::class, true)) {
+            throw new \UnexpectedValueException('Class is not a Model subclass');
+        }
+        /**
+         * Model instance to retrieve rule details.
+         *
+         * @var Model $model
+         */
+        $model = new $modelClass();
+
+        return $this->appendIfNotExists(Rule::exists($model->getTable(), $model->getKeyName(), $callback));
     }
 
     /**

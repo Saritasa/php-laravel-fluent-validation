@@ -62,6 +62,7 @@ use Saritasa\Exceptions\NotImplementedException;
  * @method static NumericRuleSet digitsBetween($minLength, $maxLength) The field under validation must have a length between the given min and max.
 
  * @method static DatabaseRuleSet exists(string $table, string $column, \Closure $closure = null) Get a exists constraint builder instance.
+ * @method static DatabaseRuleSet modelExists(string $modelClass, \Closure $closure = null) Get a exists constraint builder instance by model class.
  * @method static DatabaseRuleSet unique(string $table, string $column, \Closure $closure = null) Get a unique constraint builder instance.
 
  */
