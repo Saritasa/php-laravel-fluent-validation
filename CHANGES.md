@@ -1,5 +1,9 @@
 # Changes History
 
+1.0.11
+------
+Added when() method that allows to build rules according to conditions
+
 1.0.10
 ------
 Enum rule. See https://github.com/Saritasa/php-common#enum
