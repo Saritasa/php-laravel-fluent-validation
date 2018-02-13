@@ -1,5 +1,9 @@
 # Changes History
 
+1.0.13
+------
+Added missed modelExists() description for intellisence this method in nested rules calls
+
 1.0.12
 ------
 Added modelExists() to check that identifier exists among passed model class instances
