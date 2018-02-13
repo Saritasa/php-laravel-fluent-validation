@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
  * @method ImageRuleSet dimensions(array $constraints) Get a dimensions constraint builder instance.
  * @method GenericRuleSet exists(string $table, string $column, \Closure $closure = null) Get a exists constraint builder instance.
  * @method GenericRuleSet unique(string $table, string $column, \Closure $closure = null) Get a unique constraint builder instance.
+ * @method GenericRuleSet modelExists(string $modelClass, \Closure $closure = null) Get a exists constraint builder instance by model class.
  *
  * @method StringRuleSet activeUrl() The field under validation must have a valid A or AAAA record according to the dns_get_record PHP function.
  * @method StringRuleSet alpha() The field under validation must be entirely alphabetic characters.
