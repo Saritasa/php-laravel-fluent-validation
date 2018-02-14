@@ -15,6 +15,7 @@ use Saritasa\Exceptions\NotImplementedException;
  * @method GenericRuleSet filled() The field under validation must not be empty when it is present.
  * @method GenericRuleSet nullable() The field under validation may be null. This is particularly useful when validating primitive such as strings and integers that can contain null values.
  * @method GenericRuleSet present() The field under validation must be present in the input data but can be empty.
+ * @method GenericRuleSet modelExists(string $modelClass, \Closure $closure = null) Get a exists constraint builder instance by model class.
  */
 class RuleSet implements IRule
 {
