@@ -57,6 +57,14 @@ class NotPresentValidatorTest extends BaseTestCase
         $this->assertFalse($result);
     }
 
+    public function testNotPresentInvalid2()
+    {
+        $result = $validator = $this->validator->make([], [
+            'field' => 'not_present',
+        ])->passes();
+        $this->assertTrue($result);
+    }
+
     public function testNotPresentValidWithFluentWay()
     {
         $result = $this->validator->make([

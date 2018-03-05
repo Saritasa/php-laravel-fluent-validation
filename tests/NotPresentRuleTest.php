@@ -20,8 +20,8 @@ class NotPresentTest extends TestCase
      */
     public function testMixedForNotPresent()
     {
-        $rules = Rule::string()->notPresent()->required()->min(3);
-        $this->assertEquals('string|not_present|required|min:3', $rules);
+        $rules = Rule::string()->notPresent()->min(3);
+        $this->assertEquals('string|not_present|min:3', $rules);
 
         $this->assertEquals('string|email|nullable|not_present', Rule::email()->nullable()->notPresent());
 
