@@ -17,18 +17,7 @@ class NotPresentServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerValidator();
-
         $this->registerRule();
-    }
-
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
     }
 
     /**
@@ -36,8 +25,10 @@ class NotPresentServiceProvider extends ServiceProvider
      */
     protected function registerValidator()
     {
-        $this->app['validator']->extendImplicit('not_present', NotPresent::class . '@validate');
-        $this->app['validator']->replacer('not_present', NotPresent::class . '@message');
+        /** @var FluentValidatorFactory $validator */ //@codingStandardsIgnoreLine
+        $validator = $this->app['validator'];
+        $validator->extendImplicit('not_present', NotPresent::class . '@validate');
+        $validator->replacer('not_present', NotPresent::class . '@message');
     }
 
     /**

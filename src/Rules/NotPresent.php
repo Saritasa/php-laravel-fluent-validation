@@ -3,6 +3,7 @@
 namespace Saritasa\Laravel\Validation\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Validation\Validator;
 use Saritasa\Laravel\Validation\IRule;
 
 /**
@@ -51,11 +52,11 @@ class NotPresent implements IRule, Rule
     /**
      * Validates attribute.
      *
-     * @param  string $attribute
-     * @param  mixed  $value
-     * @param  array  $parameters
-     * @param  object $validator
-     * @return bool
+     * @param  string $attribute Attribute name
+     * @param  mixed  $value Attribute value
+     * @param  array  $parameters Parameters for validation
+     * @param  Validator $validator Validator object
+     * @return boolean
      */
     public function validate($attribute, $value, array $parameters, $validator)
     {

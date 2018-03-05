@@ -15,6 +15,8 @@ class FluentValidationServiceProvider extends ValidationServiceProvider
     public function boot()
     {
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'fluent_validation');
+        $this->app->register(PhoneServiceProvider::class);
+        $this->app->register(NotPresentServiceProvider::class);
     }
 
     protected function registerValidationFactory()
@@ -41,7 +43,5 @@ class FluentValidationServiceProvider extends ValidationServiceProvider
     public function register()
     {
         parent::register();
-        $this->app->register(PhoneServiceProvider::class);
-        $this->app->register(NotPresentServiceProvider::class);
     }
 }

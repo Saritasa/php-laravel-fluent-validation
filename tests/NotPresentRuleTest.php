@@ -24,6 +24,5 @@ class NotPresentTest extends TestCase
         $this->assertEquals('string|not_present|min:3', $rules);
 
         $this->assertEquals('string|email|nullable|not_present', Rule::email()->nullable()->notPresent());
-
     }
 }

@@ -48,6 +48,7 @@ trait SimpleRules
 
     /**
      * The field under validation must be not present in the input data.
+     *
      * @return static
      */
     public function notPresent()

@@ -6,21 +6,24 @@ use Illuminate\Config\Repository;
 use Illuminate\Validation\Validator;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Saritasa\Laravel\Validation\FluentValidationServiceProvider;
+use Saritasa\Laravel\Validation\FluentValidatorFactory;
 use Saritasa\Laravel\Validation\Rule;
 use Saritasa\Laravel\Validation\Rules\NotPresent;
 
 class NotPresentValidatorTest extends BaseTestCase
 {
+    /**
+     * Validator factory
+     *
+     * @var FluentValidatorFactory
+     */
     protected $validator;
 
-    /**
-     * @param \Illuminate\Foundation\Application $application
-     *
-     * @return array
-     */
     protected function getPackageProviders($application)
     {
-        return [FluentValidationServiceProvider::class];
+        return [
+            FluentValidationServiceProvider::class
+        ];
     }
 
     protected function getPackageAliases($app)
@@ -39,11 +42,12 @@ class NotPresentValidatorTest extends BaseTestCase
 
     public function testNotPresentValid()
     {
-        $result = $this->validator->make([
+        $validator = $this->validator->make([
             'field' => null,
         ], [
             'field' => 'not_present',
-        ])->passes();
+        ]);
+        $result = $validator->passes();
         $this->assertTrue($result);
     }
 
