@@ -37,5 +37,6 @@ class FluentValidationServiceProvider extends ValidationServiceProvider
     {
         parent::register();
         $this->app->register(PhoneServiceProvider::class);
+        $this->app->register(NotPresentServiceProvider::class);
     }
 }
