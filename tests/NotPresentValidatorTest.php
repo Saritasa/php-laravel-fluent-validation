@@ -2,6 +2,7 @@
 
 namespace Saritasa\Laravel\Validation\Tests;
 
+use Illuminate\Config\Repository;
 use Illuminate\Validation\Validator;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Saritasa\Laravel\Validation\FluentValidationServiceProvider;
@@ -20,6 +21,13 @@ class NotPresentValidatorTest extends BaseTestCase
     protected function getPackageProviders($application)
     {
         return [FluentValidationServiceProvider::class];
+    }
+
+    protected function getPackageAliases($app)
+    {
+        return [
+            'config' => Repository::class,
+        ];
     }
 
     public function setUp()
