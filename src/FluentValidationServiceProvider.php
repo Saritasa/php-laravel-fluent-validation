@@ -12,6 +12,11 @@ use Propaganistas\LaravelPhone\PhoneServiceProvider;
  */
 class FluentValidationServiceProvider extends ValidationServiceProvider
 {
+    public function boot()
+    {
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'fluent_validation');
+    }
+
     protected function registerValidationFactory()
     {
         $this->app->singleton('validator', function ($app) {

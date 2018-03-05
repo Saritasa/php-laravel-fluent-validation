@@ -44,7 +44,8 @@ class NotPresent implements IRule, Rule
      */
     public function message()
     {
-        return 'validation.not_present';
+        list($message, $attribute) = func_get_args();
+        return trans("fluent_validation::$message", ['attribute' => $attribute]);
     }
 
     /**

@@ -40,6 +40,7 @@ class NotPresentServiceProvider extends ServiceProvider
         $extend = static::canUseDependentValidation() ? 'extendDependent' : 'extend';
 
         $this->app['validator']->{$extend}('not_present', NotPresent::class . '@validate');
+        $this->app['validator']->replacer('not_present', NotPresent::class . '@message');
     }
 
     /**

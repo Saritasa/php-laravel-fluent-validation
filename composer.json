@@ -21,7 +21,8 @@
     "require-dev": {
         "mockery/mockery": "^0.9",
         "phpunit/phpunit": "^6.0",
-        "squizlabs/php_codesniffer": "^3.0"
+        "squizlabs/php_codesniffer": "^3.0",
+        "orchestra/testbench": "*"
     },
     "autoload": {
         "psr-4" : {
