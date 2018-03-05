@@ -3,12 +3,10 @@
 namespace Saritasa\Laravel\Validation\Tests;
 
 use Illuminate\Config\Repository;
-use Illuminate\Validation\Validator;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Saritasa\Laravel\Validation\FluentValidationServiceProvider;
 use Saritasa\Laravel\Validation\FluentValidatorFactory;
 use Saritasa\Laravel\Validation\Rule;
-use Saritasa\Laravel\Validation\Rules\NotPresent;
 
 class NotPresentValidatorTest extends BaseTestCase
 {
@@ -42,20 +40,19 @@ class NotPresentValidatorTest extends BaseTestCase
 
     public function testNotPresentValid()
     {
-        $validator = $this->validator->make([
-            'field' => null,
-        ], [
+        $validator = $this->validator->make([], [
             'field' => 'not_present',
         ]);
         $result = $validator->passes();
         $this->assertTrue($result);
     }
 
-    public function testNotPresentValid2()
+    public function testNotPresentValidWithFluentWay()
     {
-        $result = $validator = $this->validator->make([], [
-            'field' => 'not_present',
-        ])->passes();
+        $validator = $this->validator->make([], [
+            'field' => Rule::notPresent(),
+        ]);
+        $result = $validator->passes();
         $this->assertTrue($result);
     }
 
@@ -69,20 +66,10 @@ class NotPresentValidatorTest extends BaseTestCase
         $this->assertFalse($result);
     }
 
-    public function testNotPresentValidWithFluentWay()
-    {
-        $result = $this->validator->make([
-            'field' => null,
-        ], [
-            'field' => Rule::notPresent(),
-        ])->passes();
-        $this->assertTrue($result);
-    }
-
     public function testNotPresentInvalidWithFluentWay()
     {
         $result = $this->validator->make([
-            'field' => 'something',
+            'field' => null,
         ], [
             'field' => Rule::notPresent(),
         ])->passes();
@@ -91,29 +78,12 @@ class NotPresentValidatorTest extends BaseTestCase
 
     public function testNotPresentInvalidMessage()
     {
-        /** @var Validator $validator */
         $validator = $this->validator->make([
-            'abc' => 'something',
+            'abc' => 'test',
         ], [
             'abc' => 'not_present',
         ]);
 
-        $validator->passes();
-        $message = $validator->getMessageBag();
-        $this->assertEquals(
-            $message->get('abc')[0],
-            trans('fluent_validation::validation.not_present', ['attribute' => 'abc'])
-        );
-    }
-
-    public function testNotPresentInvalidWithNewValidation()
-    {
-        /** @var Validator $validator */
-        $validator = $this->validator->make([
-            'abc' => 'something',
-        ], [
-            'abc' => new NotPresent(),
-        ]);
         $validator->passes();
         $message = $validator->getMessageBag();
         $this->assertEquals(

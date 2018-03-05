@@ -2,19 +2,15 @@
 
 namespace Saritasa\Laravel\Validation\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Validation\Validator;
 use Saritasa\Laravel\Validation\IRule;
 
 /**
  * Not present validation for a field.
  */
-class NotPresent implements IRule, Rule
+class NotPresent implements IRule
 {
-    /**
-     * The name of the rule.
-     */
-    protected $rule = 'not_present';
+    const RULE_NAME = 'not_present';
 
     /**
      * Convert the rule to a validation string.
@@ -23,29 +19,19 @@ class NotPresent implements IRule, Rule
      */
     public function __toString(): string
     {
-        return $this->rule;
-    }
-
-    /**
-     * Check whether attribute value is set or not.
-     *
-     * @param  string  $attribute Attribute name
-     * @param  mixed  $value Attribute value
-     * @return boolean
-     */
-    public function passes($attribute, $value)
-    {
-        return is_null($value);
+        return self::RULE_NAME;
     }
 
     /**
      * Get the validation error message.
      *
+     * @param string $message Message
+     * @param string $attribute Attribute name
+     *
      * @return string
      */
-    public function message()
+    public function message($message, $attribute)
     {
-        list($message, $attribute) = func_get_args();
         return trans("fluent_validation::$message", ['attribute' => $attribute]);
     }
 
@@ -60,6 +46,7 @@ class NotPresent implements IRule, Rule
      */
     public function validate($attribute, $value, array $parameters, $validator)
     {
-        return $this->passes($attribute, $value);
+        $data = $validator->getData();
+        return ! array_has($data, $attribute);
     }
 }

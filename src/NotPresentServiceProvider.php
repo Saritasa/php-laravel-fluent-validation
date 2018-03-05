@@ -27,8 +27,8 @@ class NotPresentServiceProvider extends ServiceProvider
     {
         /** @var FluentValidatorFactory $validator */ //@codingStandardsIgnoreLine
         $validator = $this->app['validator'];
-        $validator->extendImplicit('not_present', NotPresent::class . '@validate');
-        $validator->replacer('not_present', NotPresent::class . '@message');
+        $validator->extendImplicit(NotPresent::RULE_NAME, NotPresent::class . '@validate');
+        $validator->replacer(NotPresent::RULE_NAME, NotPresent::class . '@message');
     }
 
     /**
