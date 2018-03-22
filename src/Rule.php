@@ -17,6 +17,7 @@ use Saritasa\Exceptions\NotImplementedException;
  * @method static GenericRuleSet filled() The field under validation must not be empty when it is present.
  * @method static GenericRuleSet in(... $values) The field under validation must be included in the given list of values.
  * @method static GenericRuleSet notIn(... $values) The field under validation must not be included in the given list of values.
+ * @method static GenericRuleSet notPresent() The field under validation must not be presented in the input data.
  * @method static GenericRuleSet nullable() The field under validation may be null. This is particularly useful when validating primitive such as strings and integers that can contain null values.
  * @method static GenericRuleSet present() The field under validation must be present in the input data but can be empty.
  * @method static GenericRuleSet different(string $anotherFiled) The field under validation must have a different value than field.

@@ -4,6 +4,7 @@ namespace Saritasa\Laravel\Validation;
 
 use Illuminate\Support\Facades\Config;
 use Saritasa\Exceptions\ConfigurationException;
+use Saritasa\Laravel\Validation\Rules\NotPresent;
 
 /**
  * Just breakdown of RuleSet, containing too many methods for easy reading
@@ -43,6 +44,16 @@ trait SimpleRules
     {
         $val = count($values) == 1 ? $values[0] : $values;
         return $this->appendIfNotExists(\Illuminate\Validation\Rule::notIn($val));
+    }
+
+    /**
+     * The field under validation must be not present in the input data.
+     *
+     * @return static
+     */
+    public function notPresent()
+    {
+        return $this->appendIfNotExists(new NotPresent());
     }
 
     /**

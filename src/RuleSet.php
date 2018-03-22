@@ -13,6 +13,7 @@ use Saritasa\Exceptions\NotImplementedException;
  * @method GenericRuleSet confirmed() The field under validation must have a matching field of foo_confirmation. For example, if the field under validation is password, a matching password_confirmation field must be present in the input.
  * @method GenericRuleSet distinct() When working with arrays, the field under validation must not have any duplicate values.
  * @method GenericRuleSet filled() The field under validation must not be empty when it is present.
+ * @method GenericRuleSet notPresent() The field under validation must be not present in the input data.
  * @method GenericRuleSet nullable() The field under validation may be null. This is particularly useful when validating primitive such as strings and integers that can contain null values.
  * @method GenericRuleSet present() The field under validation must be present in the input data but can be empty.
  * @method GenericRuleSet modelExists(string $modelClass, \Closure $closure = null) Get a exists constraint builder instance by model class.
@@ -30,6 +31,7 @@ class RuleSet implements IRule
         'filled',
         'nullable',
         'present',
+        'notPresent',
     ];
 
     const BASIC_RULES = [
