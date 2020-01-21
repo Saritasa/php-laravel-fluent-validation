@@ -12,9 +12,9 @@
     ],
     "require": {
         "php": ">=7.0",
-        "illuminate/database": "^5.4",
-        "illuminate/support": "^5.4",
-        "illuminate/validation": "^5.4",
+        "illuminate/database": "^5.4 || ^6.0",
+        "illuminate/support": "^5.4 || ^6.0",
+        "illuminate/validation": "^5.4 || ^6.0",
         "saritasa/php-common": "^1.0",
         "propaganistas/laravel-phone": "^3.0.4"
     },

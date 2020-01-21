@@ -1,5 +1,9 @@
 # Changes History
 
+1.1.0
+-----
+Declare compatibility with Laravel 6
+
 1.0.13
 ------
 Add missed modelExists() description for intellisence this method in nested rules calls
