@@ -54,10 +54,10 @@ class StringRuleSet extends RuleSet
      */
     public function regex(string $pattern, bool $ignoreCase = false): StringRuleSet
     {
-        if (!starts_with($pattern, '/')) {
+        if (!Str::startsWith($pattern, '/')) {
             $pattern = "/$pattern/";
         }
-        if ($ignoreCase && !ends_with('i', $pattern)) {
+        if ($ignoreCase && !Str::endsWith('i', $pattern)) {
             $pattern .= 'i';
         }
         return $this->appendIfNotExists("regex:$pattern");
