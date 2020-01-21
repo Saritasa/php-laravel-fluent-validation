@@ -2,7 +2,7 @@
 
 1.1.0
 -----
-Declare compatibility with Laravel 6
+Compatibility with Laravel 6
 
 1.0.13
 ------
