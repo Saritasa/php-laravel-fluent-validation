@@ -35,7 +35,7 @@ $rules = [
 
 ![Inline documentation](docs/inline_docs.png)
 
-**Inellisence:**
+**Intellisence:**
 
 ![Intelisence](docs/intellisence.png)
 
