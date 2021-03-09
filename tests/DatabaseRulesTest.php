@@ -74,7 +74,7 @@ class DatabaseRulesTest extends TestCase
                 ->whereNull('activation_date')
                 ->whereNot('blocked', true);
         })->required();
-        $this->assertEquals('exists:users,email,login,NOT_NULL,role,user,activation_date,NULL,blocked,!1|required', $rules);
+        $this->assertEquals('exists:users,email,login,"NOT_NULL",role,"user",activation_date,"NULL",blocked,"!1"|required', $rules->toString());
     }
 
     /**
@@ -101,7 +101,7 @@ class DatabaseRulesTest extends TestCase
                 ->whereNull('deleted_at');
         })->requiredWithout('facebook_id');
 
-        $this->assertEquals('unique:users,email,"123",id,deleted_at,NULL|required_without:facebook_id', $rules);
+        $this->assertEquals('unique:users,email,"123",id,deleted_at,"NULL"|required_without:facebook_id', $rules->toString());
     }
 
     /*
@@ -123,7 +123,7 @@ class DatabaseRulesTest extends TestCase
         $rules = Rule::modelExists(TestUserModel::class, function (Exists $rule) {
             $rule->whereNull('avatar_url')->where('active', 1);
         });
-        $this->assertEquals('exists:users,user_id,avatar_url,NULL,active,1', $rules->toString());
+        $this->assertEquals('exists:users,user_id,avatar_url,"NULL",active,"1"', $rules->toString());
     }
 
     /*

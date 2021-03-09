@@ -1,6 +1,7 @@
 # Fluent Validation Rules builders for Laravel
 
-[![Build Status](https://travis-ci.org/Saritasa/php-laravel-fluent-validation.svg?branch=master)](https://travis-ci.org/Saritasa/php-laravel-fluent-validation)
+[![PHP Unit](https://github.com/Saritasa/php-laravel-fluent-validation/workflows/PHP%20Unit/badge.svg)](https://github.com/Saritasa/php-laravel-fluent-validation/actions)
+[![PHP CodeSniffer](https://github.com/Saritasa/php-laravel-fluent-validation/workflows/PHP%20Codesniffer/badge.svg)](https://github.com/Saritasa/php-laravel-fluent-validation/actions)
 [![codecov](https://codecov.io/gh/Saritasa/php-laravel-fluent-validation/branch/master/graph/badge.svg)](https://codecov.io/gh/Saritasa/php-laravel-fluent-validation)
 [![Release](https://img.shields.io/github/release/saritasa/php-laravel-fluent-validation.svg)](https://github.com/Saritasa/php-laravel-fluent-validation/releases)
 [![PHPv](https://img.shields.io/packagist/php-v/saritasa/laravel-fluent-validation.svg)](http://www.php.net)
