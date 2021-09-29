@@ -12,7 +12,7 @@ class CustomRulesTest extends TestCase
     /**
      * Reset mocked configuration after each test
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         Config::clearResolvedInstances();
     }
