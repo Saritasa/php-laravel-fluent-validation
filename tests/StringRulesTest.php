@@ -24,6 +24,24 @@ class StringRulesTest extends TestCase
         $this->assertEquals('string|regex:/^\w+[\w-\.]*\w+$/', $rules);
     }
 
+    public function testContainsLowercase()
+    {
+        $rules = Rule::string()->containsUppercase();
+        $this->assertEquals('string|regex:/([\p{Lu}]+)/u', $rules);
+    }
+
+    public function testContainsUppercase()
+    {
+        $rules = Rule::string()->containsUppercase();
+        $this->assertEquals('string|regex:/([\p{Lu}]+)/u', $rules);
+    }
+
+    public function testContainsNumeral()
+    {
+        $rules = Rule::string()->containsNumeral();
+        $this->assertEquals('string|regex:/\d/', $rules);
+    }
+
     public function testPhoneRegex()
     {
         $rules = Rule::string()->phoneRegex();

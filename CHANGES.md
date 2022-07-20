@@ -1,5 +1,10 @@
 # Changes History
 
+1.2.0
+_____
++ Add String validation rules 'containsUppercase', 'containsLowercase', 'containsNumeral' - useful for password validation
+* Declared compatibility with Laravel 7,8,9
+
 1.1.0
 -----
 Compatibility with Laravel 6

@@ -4,6 +4,9 @@ namespace Saritasa\Laravel\Validation;
 
 use Illuminate\Support\Str;
 use Saritasa\Enum;
+use Saritasa\Laravel\Validation\Rules\ContainsLowercase;
+use Saritasa\Laravel\Validation\Rules\ContainsNumeral;
+use Saritasa\Laravel\Validation\Rules\ContainsUppercase;
 
 /**
  * Rules, that are reasonable for strings only
@@ -22,7 +25,7 @@ use Saritasa\Enum;
  */
 class StringRuleSet extends RuleSet
 {
-    const EXPOSED_RULES = ['email', 'regex', 'timezone', 'phoneRegex', 'enum'];
+    const EXPOSED_RULES = ['email', 'regex', 'timezone', 'phoneRegex', 'enum', ];
 
     const TRIVIAL_STRING_RULES = [
         'activeUrl',
@@ -77,6 +80,44 @@ class StringRuleSet extends RuleSet
             throw new \UnexpectedValueException('Class is not enum');
         }
         return $this->appendIfNotExists(Rule::in($enumClass::getConstants()));
+    }
+
+    public function enumName(string $enumClass): StringRuleSet
+    {
+        if (!is_a($enumClass, Enum::class, true)) {
+            throw new \UnexpectedValueException('Class is not enum');
+        }
+        return $this->appendIfNotExists(Rule::enumName(array_keys($enumClass::getConstants())));
+    }
+
+    /**
+     * The field under validation must contain lowercase letters
+     *
+     * @return StringRuleSet
+     */
+    public function containsLowercase(): StringRuleSet
+    {
+        return $this->regex(ContainsLowercase::REGEX);
+    }
+
+    /**
+     * The field under validation must contain uppercase letters
+     *
+     * @return StringRuleSet
+     */
+    public function containsUppercase(): StringRuleSet
+    {
+        return $this->regex(ContainsUppercase::REGEX);
+    }
+
+    /**
+     * The field under validation must contain numbers
+     *
+     * @return StringRuleSet
+     */
+    public function containsNumeral(): StringRuleSet
+    {
+        return $this->regex(ContainsNumeral::REGEX);
     }
 
     /**

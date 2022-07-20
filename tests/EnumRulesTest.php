@@ -1,6 +1,5 @@
 <?php
 
-
 use PHPUnit\Framework\TestCase;
 use Saritasa\Laravel\Validation\Rule;
 
