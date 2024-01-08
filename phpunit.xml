@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<phpunit backupStaticAttributes="false"
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd"
+         backupStaticProperties="false"
          colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
+         cacheDirectory=".phpunit.cache"
          processIsolation="false"
          stopOnFailure="false"
          bootstrap="vendor/autoload.php"
@@ -14,15 +13,13 @@
       <directory>./tests/</directory>
     </testsuite>
   </testsuites>
-
-  <filter>
-    <whitelist>
+  <source>
+    <include>
       <directory suffix=".php">./src/</directory>
-      <exclude>
-        <directory>./vendor</directory>
-        <directory>./tests</directory>
-      </exclude>
-    </whitelist>
-  </filter>
-
+    </include>
+    <exclude>
+      <directory>./vendor</directory>
+      <directory>./tests</directory>
+    </exclude>
+  </source>
 </phpunit>

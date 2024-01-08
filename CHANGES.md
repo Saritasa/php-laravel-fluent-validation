@@ -1,7 +1,13 @@
 # Changes History
 
+1.3.0
+-----
+* Declared compatibility with Laravel 10
+* Update PHPUnit config format
+- Disable phone number Unit tests (need refactoring)
+
 1.2.0
-_____
+-----
 + Add String validation rules 'containsUppercase', 'containsLowercase', 'containsNumeral' - useful for password validation
 * Declared compatibility with Laravel 7,8,9
 
